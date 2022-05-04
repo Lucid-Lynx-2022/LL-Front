@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+.navbar{
+    background-color:#004643;
+    position: fixed;
+    top: 0;
+}
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.btn-login{
+    background-color: #F9BC60;
+    color: black;
+}
+
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+ul{
+  float: right;
+  margin-right: 20px;
+}
+  
+  @media (max-width: 952px){
+    ul a{
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 858px){
+    .checkbtn{
+      display: block;
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 370px;
+      background: #004643;
+      top: 50px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+    }
+    .option{
+      display: block;
+      margin: 30px 0;
+      font-size: 16px;
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+  }
