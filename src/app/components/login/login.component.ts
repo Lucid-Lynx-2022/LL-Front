@@ -4,9 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +19,9 @@ export class LoginComponent implements OnInit {
     firebaseErrorMessage: string;
 
     constructor(
-        private authService: AuthService, 
+        public authService: AuthService, 
         private router: Router, 
         private afAuth: AngularFireAuth,
-        private matIconRegistry: MatIconRegistry,
-        private domSanitizer: DomSanitizer
         ) {
         this.loginForm = new FormGroup({
             'email': new FormControl('', [Validators.required, Validators.email]),
@@ -33,10 +29,6 @@ export class LoginComponent implements OnInit {
         });
 
         this.firebaseErrorMessage = '';
-        this.googleLogoURL = 'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg';
-        this.matIconRegistry.addSvgIcon(
-            "logo",
-            this.domSanitizer.bypassSecurityTrustResourceUrl(this.googleLogoURL));
             
     }
 
@@ -51,6 +43,12 @@ export class LoginComponent implements OnInit {
         this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) => {
             if (result == null) {                               // null is success, false means there was an error
                 console.log('logging in...');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Loging success',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 this.router.navigate(['/home']);                // when the user is logged in, navigate them to dashboard
             }
             else if (result.isValid == false) {
@@ -66,5 +64,4 @@ export class LoginComponent implements OnInit {
         console.log(error);
       }
 
-    
 }
