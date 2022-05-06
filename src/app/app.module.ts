@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from "@angular/common/http";
 
 
 import { HomeComponent } from './home/home.component';
@@ -24,6 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
