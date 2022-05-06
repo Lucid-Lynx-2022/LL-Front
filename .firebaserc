@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "lucid-lynx-2022": {
+      "hosting": {
+        "LL-Front": [
+          "lucid-lynx-2022"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "lucid-lynx-2022"
+  }
+}
