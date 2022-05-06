@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="bg-container">
+        <div class="img-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/DIY_Network_logo.svg/1280px-DIY_Network_logo.svg.png">
+        </div>
+    </div>
+    <div class="login-container">
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h1>Inciar Sesión</h1>
+                    <p>Introduce tus datos:</p>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+                    <p>
+                        <mat-form-field class="form-input" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input autocomplete="off" formControlName="email" type="email" matInput placeholder="Email">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="form-input" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </p>
+                    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+                        <span>{{ firebaseErrorMessage }}</span>
+                    </div>
+                    <div class="btn-login">
+                        <button mat-raised-button class="btn">Iniciar Sesión</button>
+                    </div>
+                </form>
+                <div class="text">
+                    <p>— o también con —</p>
+                </div>
+                <div class="btn-login">
+                    <button mat-raised-button class="btn-google">
+                        <img src="https://cdn-icons-png.flaticon.com/512/888/888854.png"> Google
+                    </button>
+                </div>
+                <div class="text">
+                    <p>¿No tienes cuenta? <a routerLink="/register" style="text-decoration: none;">Registrate</a></p>
+                </div>
+            </div> 
+        </div>   
+    </div>
+</div>

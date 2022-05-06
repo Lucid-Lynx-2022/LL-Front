@@ -1,0 +1,119 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+//CSS BACKGROUND//
+
+.bg-container{
+    display: flex;
+    flex: 65%;
+    justify-content: center;
+    align-items: center;
+    background-color: #004643;
+}
+
+.img-container{
+    height: auto;
+    align-self: center;
+    background-color: aliceblue;
+    border-radius: 50%;
+    border: 15px solid aliceblue;
+    box-shadow: 5px 5px 5px 5px;
+}
+
+.bg-container img{
+    height: 200px;
+    width: 200px;
+}
+
+//CSS FORM//
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 35%;
+    background-color: rgba(255, 255, 255, 0.952);
+    
+}
+.form-container{
+    height: auto;
+    align-self: center;
+    
+}
+
+.form-card{
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    //background-color: #ABD1C6;
+    box-shadow: 1px 1px 2px 2px #004643;
+}
+
+.form-header p{
+   color: #b3b3b3;
+    font-size: 16px;
+}
+
+.form-input{
+    width: 100%;
+}
+
+.btn-login{
+    text-align: center;
+}
+
+.btn{
+    width: 100%;
+    background-color: #F9BC60;
+}
+
+.btn-google{
+    width: 100%;
+    background-color: #ea4335;
+    color: white;
+}
+
+.btn-google img{
+    width: 30px;
+    height: 30px;
+}
+
+.text p{
+    text-align: center;
+    margin: 10px;
+}
+
+@media (max-width: 1024px) {
+    .bg-container, .login-container {
+      flex: 100%;
+    }
+    .bg-container img{
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bg-container{
+        display: none;
+    }
+    .login-container{
+        background-color: #004643;
+    }
+    .form-card{
+        background-color: white;
+        border: 2px solid black;
+    }
+}
+
+@media (max-width: 320px) {
+    .form-card {
+      padding: 15px;
+    }
+}
