@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service'
+import { AuthService } from '../../services/auth.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-
 @Component({
-    selector: 'app-signup',
-    templateUrl: './signup.component.html',
-    styleUrls: ['./signup.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
+    hide = true;
     signupForm: FormGroup;
     firebaseErrorMessage: string;
 
@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       
         this.authService.signupUser(this.signupForm.value).then((result) => {
             if (result == null)                                 // null is success, false means there was an error
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/home']);
             else if (result.isValid == false)
                 this.firebaseErrorMessage = result.message;
         }).catch(() => {

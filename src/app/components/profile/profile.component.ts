@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   constructor(public auth: AuthService, public router: Router) { }
 
@@ -19,6 +19,5 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/home']);
      }
   }
-
 
 }
