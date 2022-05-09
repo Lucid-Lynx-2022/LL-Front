@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +7,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor() { }
 
     ngOnInit(): void {
-    }
-
-    logout(): void {
-        this.afAuth.signOut();
     }
 
 }
