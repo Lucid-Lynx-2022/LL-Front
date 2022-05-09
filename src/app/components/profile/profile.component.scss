@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fffffe;
+}
+
+/////////HEADER///////////
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 100%;
+    padding: 10px;
+    color: white;
+}
+
+.header-container{
+    text-align: center;
+}
+
+.card{
+    padding: 10px;
+}
+
+.card-option{
+    box-shadow: 0 4px 8px 0 black;
+    background-color: #004643;
+    border-radius: 5px;
+}
+
+.card-img{
+    width: 100%;
+    max-height: 150px;
+    border-radius: 5px;
+}
+
+.card-description{
+    padding: 10px;
+}
