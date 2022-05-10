@@ -1,14 +1,14 @@
 {
   "targets": {
-    "lucid-lynx-2022": {
+    "lucid-lynx-2022b": {
       "hosting": {
         "LL-Front": [
-          "lucid-lynx-2022"
+          "lucid-lynx-2022b"
         ]
       }
     }
   },
   "projects": {
-    "default": "lucid-lynx-2022"
+    "default": "lucid-lynx-2022b"
   }
 }
