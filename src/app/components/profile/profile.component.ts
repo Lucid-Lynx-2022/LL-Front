@@ -10,14 +10,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(public auth: AuthService, public router: Router) { }
+  email: string;
+  uid: string;
+  displayName: string;
+  constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
    
      if( !this.auth.userLoggedIn) {
       this.router.navigate(['/home']);
      }
+
+    this.afAuth.currentUser.then((user) => {
+      this.email =user.email
+      this.uid =user.uid
+      this.displayName =user.displayName
+    });
+    
   }
 
 }

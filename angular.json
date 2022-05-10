@@ -111,8 +111,8 @@
 						"prerender": false,
 						"ssr": false,
 						"browserTarget": "LL-Front:build:production",
-						"firebaseProject": "lucid-lynx-2022",
-						"firebaseHostingSite": "lucid-lynx-2022"
+						"firebaseProject": "lucid-lynx-2022b",
+						"firebaseHostingSite": "lucid-lynx-2022b"
 					}
 				}
 			}
