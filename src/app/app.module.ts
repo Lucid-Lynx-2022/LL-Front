@@ -24,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthService } from './services/auth.service';
+import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AuthService } from './services/auth.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserTutorialComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

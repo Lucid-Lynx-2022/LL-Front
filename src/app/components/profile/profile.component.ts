@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   email: string;
   uid: string;
   displayName: string;
-  constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth) { }
+  constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth){}
 
   ngOnInit(): void {
    
@@ -22,9 +22,9 @@ export class ProfileComponent implements OnInit {
      }
 
     this.afAuth.currentUser.then((user) => {
-      this.email =user.email
-      this.uid =user.uid
-      this.displayName =user.displayName
+      this.email = user.email
+      this.uid = user.uid
+      this.displayName = user.displayName
     });
     
   }

@@ -46,8 +46,12 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/home']);                // when the user is logged in, navigate them to dashboard
             }
             else if (result.isValid == false) {
-                console.log('login error', result);
-                this.firebaseErrorMessage = result.message;
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en el inicio de sesión',
+                    text: 'Error al introducir los datos',
+                    showConfirmButton: true
+                }); 
             }
         });
     }
