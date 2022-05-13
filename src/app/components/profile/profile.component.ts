@@ -34,9 +34,9 @@ export class ProfileComponent implements OnInit {
      }
 
     this.afAuth.currentUser.then((user) => {
-      this.email =user.email
-      this.uid =user.uid
-      this.displayName =user.displayName
+      this.email = user.email
+      this.uid = user.uid
+      this.displayName = user.displayName
     });
     this.getTutos();
   }

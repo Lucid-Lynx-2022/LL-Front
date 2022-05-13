@@ -37,13 +37,19 @@ export class RegisterComponent implements OnInit {
             if (result == null) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Sing up success',
+                    title: 'Registro completado',
                     showConfirmButton: false,
                     timer: 1500
                 });                                // null is success, false means there was an error
                 this.router.navigate(['/home']);
-            }else if (result.isValid == false)
-                this.firebaseErrorMessage = result.message;
+            }else if (result.isValid == false){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en el registro',
+                    text: 'Error al introducir los datos',
+                    showConfirmButton: true
+                }); 
+            }
         }).catch(() => {
 
         });

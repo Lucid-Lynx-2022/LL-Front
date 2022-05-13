@@ -16,8 +16,8 @@
         <div class="section-container">
             <div class="featured-container">
                 <div class="featured-tutorial-container">
-                    <div class="featured-title">
-                        <h3>Tutoriales Destacados</h3>
+                    <div class="section-title">
+                        <h3>Tutorial Destacado</h3>
                     </div>
                     <div class="featured-content">
                       <a><img class="featured-img" src="https://c0.wallpaperflare.com/preview/14/791/735/flatlay-children-craft-diy-school.jpg"></a>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="recomendations-container">
-                    <div class="featured-title">
+                    <div class="section-title">
                         <h3>Tutoriales Destacados</h3>
                     </div>
                     <div class="option">
@@ -79,95 +79,18 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card">
+                  <div *ngFor="let public of publics" class="card">
                     <div class="card-option">
                       <div>
-                        <img class="card-img" src="https://c1.wallpaperflare.com/preview/558/882/364/arduino-diy-microcontroller-robotics.jpg">
+                        <img class="card-img" src="{{public.image}}">
                       </div>
                       <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
+                        <h3>{{public.title}}</h3>
+                        <p>{{public.description}}</p>
+                        <p>Por {{public.userId}}</p>
                       </div>
                     </div>
-                  </div>
-                      
-                  <div class="card">
-                    <div class="card-option">
-                      <div>
-                        <img class="card-img" src="https://c4.wallpaperflare.com/wallpaper/368/886/397/cn-tower-during-daytime-wallpaper-preview.jpg">
-                      </div>
-                      <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                  </div>
-                      
-                  <div class="card">
-                    <div class="card-option">
-                      <div>
-                        <img class="card-img" src="https://c0.wallpaperflare.com/preview/74/701/282/textures-flatlay-craft-diy-sewing.jpg">
-                      </div>
-                      <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                  </div>
-                    
-                  <div class="card">
-                    <div class="card-option">
-                      <div>
-                        <img class="card-img" src="https://c0.wallpaperflare.com/preview/418/350/388/flatlay-craft-diy-gifts.jpg">
-                      </div>
-                      <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                  </div>
-                      
-                  <div class="card">
-                    <div class="card-option">
-                      <div>
-                        <img class="card-img" src="https://c0.wallpaperflare.com/preview/14/791/735/flatlay-children-craft-diy-school.jpg">
-                      </div>
-                      <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                  </div>
-                      
-                  <div class="card">
-                    <div class="card-option">
-                      <div>
-                        <img class="card-img" src="https://c0.wallpaperflare.com/preview/763/165/124/flatlay-craft-diy-school-arts.jpg">
-                      </div>
-                      <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-option">
-                      <div>
-                        <img class="card-img" src="https://c0.wallpaperflare.com/preview/955/464/977/backgrounds-flatlay-craft-diy-school.jpg">
-                      </div>
-                      <div class="card-description">
-                        <h3>Afilador casero</h3>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                  </div>
+                  </div>                      
                 </div>
             </div>
         </div>       
