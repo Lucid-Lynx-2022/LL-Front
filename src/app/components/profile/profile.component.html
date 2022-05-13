@@ -9,6 +9,28 @@
                 <div class="card-description">
                   <p>{{displayName}}</p>
                   <p>{{email}}</p>
+                  <form [formGroup]="tutorial" (ngSubmit)="addTuto()">
+                    <input type="text" formControlName="title" placeholder="Titulo">
+                    <input type="text" formControlName="description" placeholder="Descripcion">
+                    <input (click)="addTuto()" type="submit" value="Add">
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-option">
+                <div>
+                  <img class="card-img" src="https://c0.wallpaperflare.com/preview/638/559/745/hands-textures-craft-diy-sewing.jpg">
+                </div>
+                <div class="card-description">
+                  <tr>
+                    <td *ngFor="let tutorial of listTutos" style="border: 3px solid;">
+                      <h3>{{tutorial.title}}</h3>
+                      <p>{{tutorial.description}}</p>
+                      <img src="{{tutorial.image}}" alt="">
+                      <button (click)="deleteTuto(tutorial._id)" >DELETE</button>
+                    </td>
+                    </tr>
                 </div>
               </div>
             </div>
