@@ -34,9 +34,9 @@ export class ProfileComponent implements OnInit {
      }
 
     this.afAuth.currentUser.then((user) => {
-      this.email = user.email
-      this.uid = user.uid
-      this.displayName = user.displayName
+      this.email =user.email
+      this.uid =user.uid
+      this.displayName =user.displayName
     });
     this.getTutos();
   }
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
   }
 
   addTuto() {
-    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, this.uid, this.displayName, this.email).then((data) => {
+    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, this.uid, this.displayName, this.email, new Date().toLocaleDateString()).then((data) => {
       console.log(data);
       this.getTutos();
     })
