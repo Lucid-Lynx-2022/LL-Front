@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-//import { Task } from './../models/task.model';
+import { Tuto } from '../../models/tuto/tuto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class TutoService {
   constructor() { }
 
 
-  loadTuto(): Promise<any> {
+  loadTuto(): Promise<Tuto[]> {
     return axios.get(this.urlAPI)
       .then(response => response.data)
   }
