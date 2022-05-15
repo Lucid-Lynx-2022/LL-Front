@@ -1,3 +1,81 @@
-.container{
-    margin-top: 70px;
+*{
+    box-sizing: border-box;
 }
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fffffe;
+    margin-top: 100px;
+}
+
+.tutorial-container{
+    margin: 30px 300px;
+}
+
+.table-container{
+    margin-bottom: 50px;
+}
+
+.section-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    flex: 25%;
+    padding: 10px;
+}
+
+.card-option{
+    box-shadow: 0 4px 8px 0 black;
+    background-color: #e8e4e6;
+    border-radius: 5px;
+}
+
+.card-img{
+    width: 100%;
+    max-height: 150px;
+    border-radius: 5px;
+}
+
+.card-description{
+    padding: 10px;
+}
+
+@media screen and(max-width: 1440px){
+    .tutorial-container{
+        margin: 30px 150px;
+    }
+};
+
+@media screen and (max-width: 1024px) {
+    .card {
+        flex: 50%;
+        padding-bottom: 20px;
+    }
+    .card-img{
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        flex: 100%;
+    }
+    .card-img{
+        max-height: 350px;
+    }
+    .section-container{
+        margin: 15px;
+    }
+    .section-title{
+        text-align: center;
+    }
+}
+
+@media screen and(max-width: 480px){
+    .section-container{
+        margin: 5px;
+    }
+};

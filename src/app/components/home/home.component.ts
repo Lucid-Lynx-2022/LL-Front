@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { PublicsService } from '../../services/publics/publics.service';
-import { Publics } from '../../models/publics/publics.model'
+import { TutoService } from '../../services/tuto/tuto.service';
+import { Tuto } from '../../models/tuto/tuto.model'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,16 @@ import { Publics } from '../../models/publics/publics.model'
 })
 export class HomeComponent {
 
-  publics : Publics[] = [];
+  tuto : Tuto[] = [];
 
-  constructor(private publicsService : PublicsService){
+  constructor(public afAuth: AngularFireAuth, private tutoService : TutoService){
     this.loadPublics();
   }
 
   loadPublics(){
-    this.publicsService.cargarPublics().then(publics => {
-      this.publics = publics;
+    this.tutoService.loadTuto().then(tuto => {
+      this.tuto = tuto;
     })
   }
+
 }

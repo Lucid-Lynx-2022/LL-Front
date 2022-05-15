@@ -1,4 +1,4 @@
-export type Publics ={
+export type Tuto ={
     "_id"?: string;
     "userId": string;
     "title": string;

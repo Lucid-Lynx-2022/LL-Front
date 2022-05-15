@@ -6,7 +6,9 @@
                 <p>¡Demuestra tus habilidades compartiendo tus propios tutoriales!</p>
             </div>
             <div class="btn-header">
-                <button mat-raised-button class="btn">Subir Tutorial</button>
+                <button *ngIf="(afAuth.user | async)" routerLink="/tutorial" mat-raised-button class="btn">Subir Tutorial</button>
+                <button *ngIf="!(afAuth.user | async)" routerLink="/login" mat-raised-button class="btn">Subir Tutorial</button>
+
             </div>
         </div>
         
@@ -79,7 +81,7 @@
                       </div>
                     </div>
                   </div>
-                  <div *ngFor="let public of publics" class="card">
+                  <div *ngFor="let public of tuto" class="card">
                     <div class="card-option">
                       <div>
                         <img class="card-img" src="{{public.image}}">
@@ -87,7 +89,7 @@
                       <div class="card-description">
                         <h3>{{public.title}}</h3>
                         <p>{{public.description}}</p>
-                        <p>Por {{public.userId}}</p>
+                        <p>Por {{public.displayName}}</p>
                       </div>
                     </div>
                   </div>                      

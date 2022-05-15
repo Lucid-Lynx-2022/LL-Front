@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { TutoService } from '../../services/tuto/tuto.service';
+import { Tuto } from '../../models/tuto/tuto.model'
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent{
 
-  constructor() { }
+  tuto : Tuto[] = [];
 
-  ngOnInit(): void {
+  constructor(private tutoService : TutoService){
+    this.loadPublics();
+  }
+
+  loadPublics(){
+    this.tutoService.loadTuto().then(tuto => {
+      this.tuto = tuto;
+    })
   }
 
 }

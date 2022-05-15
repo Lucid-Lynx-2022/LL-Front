@@ -1,31 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Tuto } from 'src/app/models/publics.model';
-
-export const Tutorials: Tuto[] =[
-  { id: 11, name: 'Dr Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
+import { TutoService } from '../../services/tuto/tuto.service';
+import { Tuto } from '../../models/tuto/tuto.model'
 
 @Component({
   selector: 'app-user-tutorial',
   templateUrl: './user-tutorial.component.html',
   styleUrls: ['./user-tutorial.component.scss']
 })
-export class UserTutorialComponent implements OnInit {
+export class UserTutorialComponent{
 
-  tutorials = Tutorials;
 
-  constructor() { }
+  tuto : Tuto[] = [];
 
-  ngOnInit(): void {
+  constructor(private tutoService : TutoService){
+    this.loadPublics();
+  }
+
+  loadPublics(){
+    this.tutoService.loadTuto().then(tuto => {
+      this.tuto = tuto;
+    })
   }
 
 }
