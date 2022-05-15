@@ -1,6 +1,32 @@
 <div class="container">
     <div class="add-tutorial">
-
+        <div class="add-container">
+            <div class="section-title">
+                <h3>Crear Tutorial</h3>
+            </div>
+            <div class="section-content">
+                <form [formGroup]="tutorial" (ngSubmit)="saveNewTask()">
+                    <div>
+                        <mat-form-field class="form-input" appearance="outline">
+                            <mat-label>Titulo</mat-label>
+                            <input type="text" formControlName="title" matInput placeholder="Titulo">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="form-input" appearance="outline">
+                            <mat-label>Descripción</mat-label>
+                            <textarea type="text" formControlName="description" matInput placeholder="Descripción"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <input type="file" formControlName="file" placeholder="Imagen" accept="image/png,image/jpeg"> 
+                    </div>
+                    <div>
+                        <button mat-raised-button class="btn" (click)="saveNewTask()" type="submit" value="Añadir" style="margin-top: 20px;">Añadir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="tutorial-container">
         <div class="table-container">
@@ -17,6 +43,7 @@
                     <h3>{{public.title}}</h3>
                     <p>{{public.description}}</p>
                     <p>Por {{public.displayName}}</p>
+                    <button (click)="deleteThisTuto(public)">Eliminar</button>
                 </div>
                 </div>
             </div>                      

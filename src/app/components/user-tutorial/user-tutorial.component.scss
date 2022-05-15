@@ -5,12 +5,28 @@
 .container{
     display: flex;
     flex-wrap: wrap;
+    margin: 0px 300px;
     background-color: #fffffe;
     margin-top: 100px;
 }
 
+.add-tutorial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.add-container{
+    text-align: center;
+}
+
 .tutorial-container{
-    margin: 30px 300px;
+    margin-top: 30px;
+}
+
+.form-input{
+    width: 100%;
 }
 
 .table-container{
@@ -25,6 +41,7 @@
 .card{
     flex: 25%;
     padding: 10px;
+    max-width: 325px;
 }
 
 .card-option{

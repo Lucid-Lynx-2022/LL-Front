@@ -11,7 +11,7 @@ export class TutoService {
   constructor() { }
 
 
-  loadTuto(): Promise<any> {
+  loadTuto(): Promise<Tuto[]> {
     return axios.get(this.urlAPI)
       .then(response => response.data)
   }
