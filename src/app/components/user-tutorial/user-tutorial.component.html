@@ -44,6 +44,7 @@
                     <p>{{public.description}}</p>
                     <p>Por {{public.displayName}}</p>
                     <button (click)="deleteThisTuto(public)">Eliminar</button>
+                    <button [routerLink]="['/tutorial', public._id]">Detalles</button>
                 </div>
                 </div>
             </div>                      
