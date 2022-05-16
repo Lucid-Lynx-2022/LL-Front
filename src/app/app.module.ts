@@ -26,6 +26,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthService } from './services/auth.service';
 import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.component';
 import { CategoryComponent } from './components/category/category.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CategoryComponent } from './components/category/category.component';
     RegisterComponent,
     ProfileComponent,
     UserTutorialComponent,
-    CategoryComponent
+    CategoryComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
