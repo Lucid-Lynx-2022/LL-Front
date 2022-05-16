@@ -74,7 +74,7 @@ export class UserTutorialComponent implements OnInit{
   }
 
   updateThisTuto(tuto : Tuto){
-    this.tutoService.updateTuto(tuto._id as string,"actualizando titulo","actualizando descripcion")
+    this.tutoService.updateTuto(tuto._id as string,this.tutorial.get('title').value, this.tutorial.get('description').value)
     .then((upTuto) => {
       this.loadPublics();
       this.tutorial.reset();
