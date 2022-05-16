@@ -60,23 +60,6 @@ export class UserTutorialComponent implements OnInit{
     })
   }
 
-  /*
-  addTutorial() {
-    console.log(this.tutorial.value);
-
-    const Tutorial: any = {
-      title: this.tutorial.get('title').value,
-      description: this.tutorial.get('description').value,
-      uid: this.uid,
-      
-      autor: this.displayName,
-      email: this.email,
-      fecha: new Date().toLocaleDateString()
-    } 
-  console.log(Tutorial);
-  }
-  */
-
   loadPublics(){
     this.tutoService.loadTuto().then(tuto => {
       this.tuto = tuto;
@@ -88,6 +71,14 @@ export class UserTutorialComponent implements OnInit{
       .then(response => {
         this.tuto = this.tuto.filter(t => t._id !== tuto._id)
       })
+  }
+
+  updateThisTuto(tuto : Tuto){
+    this.tutoService.updateTuto(tuto._id as string,"actualizando titulo","actualizando descripcion")
+    .then((upTuto) => {
+      this.loadPublics();
+      this.tutorial.reset();
+    })
   }
 
 }

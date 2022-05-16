@@ -8,6 +8,8 @@ import { Tuto } from '../../models/tuto/tuto.model';
 export class TutoService {
 
   urlAPI = "https://lucidlynx22.herokuapp.com/publics"
+  //urlAPI = "http://localhost:4000/publics"
+
   constructor() { }
 
 
@@ -20,6 +22,10 @@ export class TutoService {
     return axios.post(this.urlAPI, { title: newTutoTitle, description: newTutoDescription, userId: newTutoUid, displayName: newTutoAutor, email: newTutoEmail, date: newTutoFecha })
       .then(response => response.data)
 
+  }
+  updateTuto( id : string , newTutoTitle: string, newTutoDescription: string){
+    return axios.patch(this.urlAPI + '/' + id, { title: newTutoTitle, description: newTutoDescription})
+      .then(response => response.data)
   }
 
   deleteTuto( id : string ){
