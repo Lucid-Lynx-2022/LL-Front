@@ -7,7 +7,7 @@ import { Tuto } from '../../models/tuto/tuto.model';
 })
 export class TutoService {
 
-  urlAPI = "http://localhost:4000/publics"
+  urlAPI = "https://lucidlynx22.herokuapp.com/publics"
   constructor() { }
 
 
@@ -22,9 +22,13 @@ export class TutoService {
 
   }
 
-
   deleteTuto( id : string ){
     return axios.delete(this.urlAPI + '/' + id)
       .then(response => response.data)
+  }
+
+  getUserById(id : string){
+    return axios.get(`${ this.urlAPI}/${id}`)
+      .then( result => result.data)
   }
 }
