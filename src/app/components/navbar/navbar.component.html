@@ -1,5 +1,5 @@
 <mat-toolbar class="navbar mat-elevation-z8">
-  <span><mat-icon>eco</mat-icon>TuToTu</span>
+  <span routerLink="/home"><mat-icon>eco</mat-icon> TuToTu</span>
 
   <div class="spacer"></div>
 
@@ -10,11 +10,11 @@
 
   <ul>
     <a class="option" mat-button routerLink="/home">Inicio</a>
-    <a class="option" mat-button>Tutorial</a>
-    <a class="option" mat-button>Categorías</a>
-    <a class="option" mat-button routerLink="/profile">Perfil</a>
-    <a *ngIf="!(afAuth.user | async)" class="option" mat-raised-button class="btn-login" routerLink="/login">Iniciar Sesión</a>
-    <a *ngIf="(afAuth.user | async)" (click)="logout()" class="option" mat-raised-button class="btn-login" routerLink="/home">Cerrar Sesión</a>
+    <a class="option" mat-button routerLink="/categories">Categorías</a>
+    <a *ngIf="(afAuth.user | async)" class="option" mat-button routerLink="/tutorial">Mis Tutoriales</a>
+    <a *ngIf="(afAuth.user | async)" class="option" mat-button routerLink="/profile">Perfil</a>
+    <button *ngIf="!(afAuth.user | async)" class="option" mat-raised-button class="btn-login" routerLink="/login">Iniciar Sesión</button>
+    <button *ngIf="(afAuth.user | async)" (click)="logout()" style="background-color: #e16162 !important; color: white !important;" class="option" mat-raised-button class="btn-login" routerLink="/home">Cerrar Sesión</button>
   </ul>
     
 </mat-toolbar>

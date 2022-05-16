@@ -1,7 +1,7 @@
 <div class="container">
     <div class="bg-container">
         <div class="img-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/DIY_Network_logo.svg/1280px-DIY_Network_logo.svg.png">
+            <a routerLink="/home"><img src="https://pngimage.net/wp-content/uploads/2018/05/diy-png-1.png"></a>
         </div>
     </div>
     <div class="login-container">
@@ -12,19 +12,19 @@
                     <p>Introduce tus datos:</p>
                 </div>
                 <form [formGroup]="signupForm" (ngSubmit)="signup()">
-                    <p>
+                    <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Nombre</mat-label>
                             <input autocomplete="off" formControlName="displayName" type="text" matInput placeholder="Display Name">
                         </mat-form-field>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Email</mat-label>
                             <input autocomplete="off" formControlName="email" type="email" matInput placeholder="Email">
                         </mat-form-field>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Password</mat-label>
                             <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
@@ -32,9 +32,6 @@
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
                         </mat-form-field>
-                    </p>
-                    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
-                        <span>{{ firebaseErrorMessage }}</span>
                     </div>
                     <div class="btn-login">
                         <button mat-raised-button class="btn">Registrarse</button>
@@ -44,7 +41,7 @@
                     <p>— o también con —</p>
                 </div>
                 <div class="btn-login">
-                    <button mat-raised-button class="btn-google">
+                    <button mat-raised-button class="btn-google" (click)="authService.GoogleAuth()">
                         <img src="https://cdn-icons-png.flaticon.com/512/888/888854.png"> Google
                     </button>
                 </div>

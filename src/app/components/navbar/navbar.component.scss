@@ -4,11 +4,15 @@
     box-sizing: border-box;
     color: white;
 }
+span{
+  cursor: pointer;
+}
 
 .navbar{
     background-color:#004643;
     position: fixed;
     top: 0;
+    z-index: 1;
 }
 
 .spacer{
@@ -36,12 +40,10 @@ ul{
   margin-right: 20px;
 }
   
-  @media (max-width: 952px){
+  @media (max-width: 768px){
     ul a{
       font-size: 18px;
     }
-  }
-  @media (max-width: 858px){
     .checkbtn{
       display: block;
     }

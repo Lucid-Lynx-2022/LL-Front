@@ -1,0 +1,212 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fffffe;
+}
+
+/////////HEADER///////////
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #004643;
+    height: 500px;
+    width: 100%;
+    padding: 60px;
+    color: white;
+}
+
+.header-container{
+    text-align: center;
+}
+
+.content-header{
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+h1{
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.btn-header{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    width: 100%;
+    text-align: center;
+    background-color: #F9BC60;
+}
+
+/////////SECTION///////////
+
+section{
+    width: 100%;
+}
+
+.section-container{
+    margin: 30px 300px;
+}
+
+.featured-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.featured-tutorial-container{
+    flex: 60%;
+}
+
+.featured-title{
+    margin-bottom: 5px;
+}
+
+.featured-img{
+    width: 100%;
+    min-height: 250px;
+    max-height: 400px;
+    border-radius: 10px;
+}
+
+.featured-content{
+    padding-right: 50px;
+}
+
+.recomendations-container{
+    flex: 40%;
+    padding-left: 50px;
+    border-left: 1px solid #e8e4e6;
+}
+
+.option{
+    display: flex;
+    justify-content: start;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e8e4e6;
+}
+
+.img-option{
+    width: 100%;
+    max-height: 150px;
+    border-radius: 10px;
+}
+
+.option-description{
+    margin-left: 20px;
+}
+
+///////Section Content ////////
+
+.table-container{
+    margin-bottom: 50px;
+}
+
+.section-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    flex: 25%;
+    padding: 10px;
+}
+
+.card-option{
+    box-shadow: 0 4px 8px 0 black;
+    background-color: #e8e4e6;
+    border-radius: 5px;
+}
+
+.card-img{
+    width: 100%;
+    max-height: 150px;
+    border-radius: 5px;
+}
+
+.card-description{
+    padding: 10px;
+}
+
+  
+/* MQ */
+@media screen and(min-width: 1441px) {
+    .card{
+        max-width: 325px;
+    }
+    
+}
+
+@media screen and(max-width: 1440px){
+    .section-container{
+        margin: 30px 150px;
+    }
+};
+
+@media screen and (max-width: 1024px) {
+    .featured-tutorial-container, .recomendations-container{
+        flex: 100%;
+        padding: 0;
+    }
+    .featured-content{
+        padding: 0;
+    }
+    .option-description{
+        margin-left: 50px;
+    }
+    .recomendations-container{
+        margin-top: 20px;
+        padding-top: 20px;
+        border-left: 0px;
+        border-top:1px solid #e8e4e6;
+    }
+    .card {
+        flex: 50%;
+        padding-bottom: 20px;
+    }
+    .card-img{
+        max-height: 250px;
+    }
+    .section-container{
+        margin: 15px;
+    }
+    .section-title{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recomendations-container{
+        padding-top: 20px;
+    }
+    .featured-tutorial-container{
+        padding-bottom: 20px;
+    }
+    .card {
+        flex: 100%;
+    }
+    .card-img{
+        max-height: 350px;
+    }
+}
+
+@media screen and(max-width: 480px){
+    .section-container{
+        margin: 5px;
+    }
+    h1{
+        font-size: 28px;
+    }
+    .option-description{
+        margin-left: 10px;
+    }
+};
+  

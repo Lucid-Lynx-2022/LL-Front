@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px 300px;
+    background-color: #fffffe;
+    margin-top: 100px;
+}
+
+.add-tutorial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.add-container{
+    text-align: center;
+}
+
+.tutorial-container{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.form-input{
+    width: 100%;
+}
+
+.table-container{
+    margin-bottom: 50px;
+}
+
+.section-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn{
+    background-color: #F9BC60;
+}
+
+.card{
+    flex: 25%;
+    padding: 10px;
+}
+
+.card-option{
+    box-shadow: 0 4px 8px 0 black;
+    background-color: #e8e4e6;
+    border-radius: 5px;
+}
+
+.card-img{
+    width: 100%;
+    max-height: 150px;
+    border-radius: 5px;
+}
+
+.card-description{
+    padding: 10px;
+}
+
+@media screen and(min-width: 1441px) {
+    .card{
+        max-width: 325px;
+    }
+    
+}
+
+@media screen and(max-width: 1440px){
+    .container{
+        margin: 80px 150px;
+    }
+};
+
+@media screen and (max-width: 1024px) {
+    .card {
+        flex: 50%;
+        padding-bottom: 20px;
+    }
+    .card-img{
+        max-height: 250px;
+    }
+    .container{
+        margin: 80px 50px;
+    }
+    .section-title{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        flex: 100%;
+    }
+    .card-img{
+        max-height: 350px;
+    }
+}
+
+@media screen and(max-width: 480px){
+    .container{
+        margin: 80px 5px;
+    }
+};

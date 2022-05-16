@@ -20,15 +20,11 @@
 .img-container{
     height: auto;
     align-self: center;
-    background-color: aliceblue;
-    border-radius: 50%;
-    border: 15px solid aliceblue;
-    box-shadow: 5px 5px 5px 5px;
 }
 
 .bg-container img{
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 400px;
 }
 
 //CSS FORM//
@@ -38,7 +34,6 @@
     justify-content: center;
     align-items: center;
     flex: 35%;
-    background-color: rgba(255, 255, 255, 0.952);
     
 }
 .form-container{
@@ -51,8 +46,7 @@
     padding: 20px;
     border-radius: 10px;
     width: 100%;
-    //background-color: #ABD1C6;
-    box-shadow: 1px 1px 2px 2px #004643;
+    box-shadow: 0 4px 8px 0 black;
 }
 
 .form-header p{
@@ -94,8 +88,14 @@
       flex: 100%;
     }
     .bg-container img{
-        height: 100px;
-        width: 100px;
+        height: 200px;
+        width: 200px;
+    }
+    .bg-container {
+        margin-bottom: 50px;
+    }
+    .container{
+        height: 0;
     }
 }
 
@@ -109,6 +109,9 @@
     .form-card{
         background-color: white;
         border: 2px solid black;
+    }
+    .container{
+        height: 100%;
     }
 }
 

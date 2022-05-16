@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,11 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthService } from './services/auth.service';
+import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.component';
+import { CategoryComponent } from './components/category/category.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +35,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserTutorialComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -39,12 +47,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebase),  // imports firebase/app needed for everything
+    AngularFireAuthModule,
     MatCardModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
