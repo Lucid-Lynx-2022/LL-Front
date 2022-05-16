@@ -23,6 +23,7 @@
 
 .tutorial-container{
     margin-top: 30px;
+    width: 100%;
 }
 
 .form-input{
@@ -38,10 +39,13 @@
     flex-wrap: wrap;
 }
 
+.btn{
+    background-color: #F9BC60;
+}
+
 .card{
     flex: 25%;
     padding: 10px;
-    max-width: 325px;
 }
 
 .card-option{
@@ -60,8 +64,15 @@
     padding: 10px;
 }
 
+@media screen and(min-width: 1441px) {
+    .card{
+        max-width: 325px;
+    }
+    
+}
+
 @media screen and(max-width: 1440px){
-    .tutorial-container{
+    .container{
         margin: 30px 150px;
     }
 };
@@ -74,6 +85,12 @@
     .card-img{
         max-height: 250px;
     }
+    .container{
+        margin: 30px 50px;
+    }
+    .section-title{
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -83,16 +100,10 @@
     .card-img{
         max-height: 350px;
     }
-    .section-container{
-        margin: 15px;
-    }
-    .section-title{
-        text-align: center;
-    }
 }
 
 @media screen and(max-width: 480px){
-    .section-container{
-        margin: 5px;
+    .container{
+        margin: 30px 5px;
     }
 };
