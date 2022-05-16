@@ -25,7 +25,12 @@ export class ProfileComponent implements OnInit {
     this.afAuth.currentUser.then((user) => {
       this.email =user.email
       this.uid =user.uid
-      this.displayName =user.displayName
+      if (user.displayName==''){
+        var res = user.email.split("@");
+        this.displayName = res[0]
+      }else{
+        this.displayName = user.displayName
+      }
     });
   }
 
