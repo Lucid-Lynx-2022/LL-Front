@@ -118,7 +118,6 @@ section{
 .card{
     flex: 25%;
     padding: 10px;
-    max-width: 325px;
 }
 
 .card-option{
@@ -139,6 +138,13 @@ section{
 
   
 /* MQ */
+@media screen and(min-width: 1441px) {
+    .card{
+        max-width: 325px;
+    }
+    
+}
+
 @media screen and(max-width: 1440px){
     .section-container{
         margin: 30px 150px;
