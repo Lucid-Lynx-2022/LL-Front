@@ -18,9 +18,9 @@
                             <textarea type="text" formControlName="description" matInput placeholder="Descripción"></textarea>
                         </mat-form-field>
                     </div>
-                    <div>
+                    <!--<div>
                         <input type="file" formControlName="file" placeholder="Imagen" accept="image/png,image/jpeg"> 
-                    </div>
+                    </div>-->
                     <div>
                         <button mat-raised-button class="btn" (click)="saveNewTask()" type="submit" value="Añadir" style="margin-top: 20px;">Añadir</button>
                     </div>
@@ -44,7 +44,7 @@
                     <p>{{public.description}}</p>
                     <p>Por {{public.displayName}}</p>
                     <button (click)="deleteThisTuto(public)">Eliminar</button>
-                    <button [routerLink]="['/tutorial', public._id]">Detalles</button>
+                    <!--<button [routerLink]="['/tutorial', public._id]">Detalles</button>-->
                 </div>
                 </div>
             </div>                      
