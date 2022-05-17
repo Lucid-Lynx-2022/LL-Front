@@ -27,6 +27,7 @@ import { AuthService } from './services/auth.service';
 import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.component';
 import { CategoryComponent } from './components/category/category.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DetailComponent } from './components/detail/detail.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
