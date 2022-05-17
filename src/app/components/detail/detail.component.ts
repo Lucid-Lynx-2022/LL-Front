@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { TutoService } from 'src/app/services/tuto/tuto.service';
 
 @Component({
   selector: 'app-detail',
@@ -14,7 +16,12 @@ export class DetailComponent implements OnInit {
   email: string;
   uid: string;
   displayName: string;
-  constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth)  {}
+
+  public: any = [];
+
+  constructor(public auth: AuthService, public router: Router, private route: ActivatedRoute, private tutoService: TutoService, private afAuth: AngularFireAuth)  {
+    this.loadPublic();
+  }
 
   ngOnInit(): void {
    
@@ -27,6 +34,29 @@ export class DetailComponent implements OnInit {
       this.uid =user.uid
       this.displayName =user.displayName
     });
+  }
+
+  async loadPublic(): Promise<void>{
+    const _id = this.route.snapshot.paramMap.get('_id');
+    this.public = await this.tutoService.getUserById(String(_id));
+  }
+
+  isImage(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.jpeg') || url.endsWith('.png')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isVideo(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.mp4')){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }

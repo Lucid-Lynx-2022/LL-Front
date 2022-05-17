@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import {MatDialogModule} from "@angular/material/dialog";
+
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
@@ -27,6 +29,7 @@ import { AuthService } from './services/auth.service';
 import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.component';
 import { CategoryComponent } from './components/category/category.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { EditTutorialComponent } from './components/edit-tutorial/edit-tutorial.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { DetailComponent } from './components/detail/detail.component';
     ProfileComponent,
     UserTutorialComponent,
     CategoryComponent,
-    DetailComponent
+    DetailComponent,
+    EditTutorialComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +55,10 @@ import { DetailComponent } from './components/detail/detail.component';
     AngularFireModule.initializeApp(environment.firebase),  // imports firebase/app needed for everything
     AngularFireAuthModule,
     MatCardModule,
-    MatInputModule,
+    MatInputModule, 
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
