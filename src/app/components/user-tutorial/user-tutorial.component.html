@@ -5,7 +5,7 @@
                 <h3>Crear Tutorial</h3>
             </div>
             <div class="section-content">
-                <form [formGroup]="tutorial" (ngSubmit)="saveNewTuto()">
+                <form [formGroup]="tutorial" >
                     <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Titulo</mat-label>
@@ -47,7 +47,7 @@
                     <p>{{public.description}}</p>
                     <p>Por {{public.displayName}}</p>
                     <button (click)="deleteThisTuto(public)">Eliminar</button>
-                    <button (click)="openDialog()">Editar</button>
+                    <button (click)="openDialog(public)">Editar</button>
                 </div>
                 </div>
             </div>                      

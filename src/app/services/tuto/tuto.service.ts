@@ -7,8 +7,8 @@ import { Tuto } from '../../models/tuto/tuto.model';
 })
 export class TutoService {
 
-  //urlAPI = "https://lucidlynx22.herokuapp.com/publics"
-  urlAPI = "http://localhost:4000/publics/"
+  urlAPI = "https://lucidlynx22.herokuapp.com/publics"
+  //urlAPI = "http://localhost:4000/publics/"
 
   constructor() { }
 
@@ -33,9 +33,60 @@ export class TutoService {
       .then(response => response.data)
 
   }
-  updateTuto( id : string , newTutoTitle: string, newTutoDescription: string){
-    return axios.patch(this.urlAPI + '/' + id, { title: newTutoTitle, description: newTutoDescription})
+  updateTuto( id : string , newTutoTitle, newTutoDescription, image:FormData){
+
+    if(newTutoTitle && newTutoDescription && image){
+      // se actualizan los 3 campos
+      return axios.patch(this.urlAPI + '/' + id, { title: newTutoTitle, description: newTutoDescription, image:image},
+      {headers: {
+        'accept': 'application/json',
+         'content-type': 'multipart/form-data' // do not forget this 
+        }})
       .then(response => response.data)
+
+    }else if (newTutoTitle && !newTutoDescription && !image){
+      // solo se actualiza el titulo
+      return axios.patch(this.urlAPI + '/' + id, { title: newTutoTitle})
+      .then(response => response.data)
+
+    }else if (!newTutoTitle && newTutoDescription && !image){
+      // solo se actualiza la description
+      return axios.patch(this.urlAPI + '/' + id, { description: newTutoDescription})
+      .then(response => response.data)
+
+    }else if (!newTutoTitle && !newTutoDescription && image){
+      // solo se actualiza la imagen
+      return axios.patch(this.urlAPI + '/' + id, { image: image},
+      {headers: {
+        'accept': 'application/json',
+         'content-type': 'multipart/form-data' // do not forget this 
+        }})
+      .then(response => response.data)
+
+    }else if (newTutoTitle && newTutoDescription && !image){
+      // solo se actualiza el titulo y la descripcion
+            return axios.patch(this.urlAPI + '/' + id, { title: newTutoTitle, description: newTutoDescription})
+      .then(response => response.data)
+
+    }else if (newTutoTitle && !newTutoDescription && image){
+      // solo se actualiza el titulo e imagen
+            return axios.patch(this.urlAPI + '/' + id, { title: newTutoTitle, image:image},
+            {headers: {
+              'accept': 'application/json',
+               'content-type': 'multipart/form-data' // do not forget this 
+              }})
+            .then(response => response.data)
+
+    }else if (!newTutoTitle && newTutoDescription && image){
+      // solo se actualiza la descripcion e imagen
+            return axios.patch(this.urlAPI + '/' + id, { description: newTutoDescription, image:image },
+            {headers: {
+              'accept': 'application/json',
+               'content-type': 'multipart/form-data' // do not forget this 
+              }})
+            .then(response => response.data)
+
+    }
   }
 
   deleteTuto( id : string ){

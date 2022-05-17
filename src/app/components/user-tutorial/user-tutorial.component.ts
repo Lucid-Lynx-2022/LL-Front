@@ -56,12 +56,15 @@ export class UserTutorialComponent implements OnInit{
       this.displayName = user.displayName
     }
    }).then((h) => {
-     this.loadPublics();
+     this.loadMyPublics();
    })
  }
 
  onFileChange(event: Event) {
   const target = event.target as HTMLInputElement;
+  if(target.files[0].size > this.MAX_SIZE_FILE_KB){
+    //mensaje emergente de tamaño de fichero excedido
+  }
   if (target.files && target.files.length > 0) {
     this.image = target.files[0]
   }  
@@ -71,12 +74,13 @@ export class UserTutorialComponent implements OnInit{
                                 this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
                                 this.image)
     .then((newTuto) => {
-      this.loadPublics();
+      // añadir mensaje emergente de publicacion añadida correctamente
+      this.loadMyPublics();
       this.tutorial.reset();
     })
   }
 
-  loadPublics(){
+  loadMyPublics(){
     this.tutoService.loadTuto(this.uid).then(tuto => {
       this.tuto = tuto;
     })
@@ -89,15 +93,7 @@ export class UserTutorialComponent implements OnInit{
       })
   }
 
-  updateThisTuto(tuto : Tuto){
 
-
-    this.tutoService.updateTuto(tuto._id as string,this.tutorial.get('title').value, this.tutorial.get('description').value)
-    .then((upTuto) => {
-      this.loadPublics();
-      this.tutorial.reset();
-    })
-  }
 
   isImage(url : string){
     if(url === undefined) return false;
@@ -117,8 +113,10 @@ export class UserTutorialComponent implements OnInit{
     }
   }
 
-  openDialog() {
-    this.dialog.open(EditTutorialComponent)
+  openDialog(tuto : Tuto) {
+    this.dialog.open(EditTutorialComponent, {
+      data: tuto._id, 
+    });
   }
 
 }
