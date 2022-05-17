@@ -1,6 +1,6 @@
 <div class="container">
     <div class="add-tutorial">
-        <p>Aquí ira un buscador</p>
+        <input type="text" name="search" [(ngModel)]="searchText" placeholder="search by ">
     </div>
     <div class="tutorial-container">
         <div class="table-container">
@@ -8,7 +8,7 @@
                 <h3>Todos los Tutoriales</h3>
             </div>
             <div class="section-content">
-            <div *ngFor="let public of tuto" class="card">
+            <div *ngFor="let public of tuto | filter:searchText" class="card">
                 <div class="card-option">
                 <div>
                     <img class="card-img" src="{{public.image}}">

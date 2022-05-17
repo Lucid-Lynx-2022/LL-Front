@@ -30,6 +30,8 @@ import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.
 import { CategoryComponent } from './components/category/category.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { EditTutorialComponent } from './components/edit-tutorial/edit-tutorial.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { EditTutorialComponent } from './components/edit-tutorial/edit-tutorial.
     MatInputModule, 
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    Ng2SearchPipeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
