@@ -8,12 +8,18 @@ import { Tuto } from '../../models/tuto/tuto.model';
 export class TutoService {
 
   //urlAPI = "https://lucidlynx22.herokuapp.com/publics"
-  urlAPI = "http://localhost:4000/publics"
+  urlAPI = "http://localhost:4000/publics/"
 
   constructor() { }
 
 
-  loadTuto(): Promise<Tuto[]> {
+  loadTuto(uid:string): Promise<Tuto[]> {
+    console.log(this.urlAPI + '?userId=' + uid)
+    return axios.get(this.urlAPI + '?userId=' + uid)
+      .then(response => response.data)
+  }
+
+  loadAllTutos(): Promise<Tuto[]> {
     return axios.get(this.urlAPI)
       .then(response => response.data)
   }

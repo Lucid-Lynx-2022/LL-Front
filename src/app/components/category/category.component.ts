@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit{
   }
 
   loadPublics(){
-    this.tutoService.loadTuto().then(tuto => {
+    this.tutoService.loadAllTutos().then(tuto => {
       this.tuto = tuto;
     })
   }
