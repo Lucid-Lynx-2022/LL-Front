@@ -41,11 +41,9 @@ export class UserTutorialComponent implements OnInit{
 
 
   ngOnInit(): void {
-   
     if( !this.auth.userLoggedIn) {
      this.router.navigate(['/home']);
     }
-
    this.afAuth.currentUser.then((user) => {
      this.email =user.email
      this.uid =user.uid
@@ -55,19 +53,18 @@ export class UserTutorialComponent implements OnInit{
     }else{
       this.displayName = user.displayName
     }
-   });
-   this.loadPublics();
+   }).then((h) => {
+     this.loadPublics();
+   })
  }
 
  onFileChange(event: Event) {
   const target = event.target as HTMLInputElement;
   if (target.files && target.files.length > 0) {
     this.image = target.files[0]
-      console.log(target.files[0]);
   }  
  }
  saveNewTuto(){
-   console.log(this.image)
     this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
                                 this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
                                 this.image)
@@ -78,7 +75,7 @@ export class UserTutorialComponent implements OnInit{
   }
 
   loadPublics(){
-    this.tutoService.loadTuto().then(tuto => {
+    this.tutoService.loadTuto(this.uid).then(tuto => {
       this.tuto = tuto;
     })
   }
