@@ -1,14 +1,21 @@
+<p routerLink="/tutorial" style="cursor: pointer; margin-top: 80px; margin-left:20px; font-size: 24px;">X</p>
 <header>
     <div class="header-container">
         <div class="section-content">
             <div class="card">
               <div class="card-option">
-                <div>
-                  <img class="card-img" src="https://c0.wallpaperflare.com/preview/638/559/745/hands-textures-craft-diy-sewing.jpg">
+                <div *ngIf="isImage(public.image)">
+                  <img class="card-img" src="{{public.image}}">
+                </div>
+                <div *ngIf="isVideo(public.image)">
+                    <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
                 </div>
                 <div class="card-description">
-                  <p>{{displayName}}</p>
-                  <p>{{email}}</p>
+                  <p>{{public.displayName}}</p>
+                  <p>{{public.email}}</p>
+                  <p>{{public.title}}</p>
+                  <p>{{public.description}}</p>
+                  <p>{{public.date}}</p>
                 </div>
               </div>
             </div>

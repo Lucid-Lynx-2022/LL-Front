@@ -3,8 +3,10 @@ import { TutoService } from '../../services/tuto/tuto.service';
 import { Tuto } from '../../models/tuto/tuto.model'
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { EditTutorialComponent } from '../edit-tutorial/edit-tutorial.component';
 
 
 @Component({
@@ -31,7 +33,7 @@ export class UserTutorialComponent implements OnInit{
   displayName: string;
   image;
   
-  constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth, private fb: FormBuilder, private tutoService: TutoService)  { 
+  constructor(public auth: AuthService, public dialog: MatDialog, public router: Router, private afAuth: AngularFireAuth, private fb: FormBuilder, private tutoService: TutoService)  { 
     this.tutorial = this.fb.group({
       title: '',
       description: '',
@@ -95,6 +97,28 @@ export class UserTutorialComponent implements OnInit{
       this.loadPublics();
       this.tutorial.reset();
     })
+  }
+
+  isImage(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.jpeg') || url.endsWith('.png')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isVideo(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.mp4')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  openDialog() {
+    this.dialog.open(EditTutorialComponent)
   }
 
 }

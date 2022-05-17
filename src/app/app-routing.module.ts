@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './services/auth.guard';
 import { UserTutorialComponent } from './components/user-tutorial/user-tutorial.component';
 import { CategoryComponent } from './components/category/category.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'tutorial', component: UserTutorialComponent },
     { path: 'categories', component: CategoryComponent },
+    { path: 'detail/:_id', component: DetailComponent},
     { path: '**', component: HomeComponent },                       // catch-all in case no other path matched
 ];
 
