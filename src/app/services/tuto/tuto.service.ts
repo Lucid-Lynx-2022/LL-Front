@@ -7,8 +7,8 @@ import { Tuto } from '../../models/tuto/tuto.model';
 })
 export class TutoService {
 
-  urlAPI = "https://lucidlynx22.herokuapp.com/publics"
-  //urlAPI = "http://localhost:4000/publics"
+  //urlAPI = "https://lucidlynx22.herokuapp.com/publics"
+  urlAPI = "http://localhost:4000/publics"
 
   constructor() { }
 
@@ -18,8 +18,12 @@ export class TutoService {
       .then(response => response.data)
   }
 
-  saveNewTuto(newTutoTitle: string, newTutoDescription: string, newTutoUid: string, newTutoAutor: string, newTutoEmail: string, newTutoFecha: string){
-    return axios.post(this.urlAPI, { title: newTutoTitle, description: newTutoDescription, userId: newTutoUid, displayName: newTutoAutor, email: newTutoEmail, date: newTutoFecha })
+  saveNewTuto(newTutoTitle: string, newTutoDescription: string, newTutoUid: string, newTutoAutor: string, newTutoEmail: string, newTutoFecha: string, image: FormData){
+    return axios.post(this.urlAPI, { title: newTutoTitle, description: newTutoDescription, userId: newTutoUid, displayName: newTutoAutor, email: newTutoEmail, date: newTutoFecha, image:image },
+      {headers: {
+        'accept': 'application/json',
+         'content-type': 'multipart/form-data' // do not forget this 
+        }})
       .then(response => response.data)
 
   }

@@ -5,24 +5,24 @@
                 <h3>Crear Tutorial</h3>
             </div>
             <div class="section-content">
-                <form [formGroup]="tutorial" (ngSubmit)="saveNewTask()">
+                <form [formGroup]="tutorial" (ngSubmit)="saveNewTuto()">
                     <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Titulo</mat-label>
-                            <input type="text" formControlName="title" matInput placeholder="Titulo">
+                            <input type="text" formControlName="title" matInput placeholder="Titulo" required>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Descripción</mat-label>
-                            <textarea type="text" formControlName="description" matInput placeholder="Descripción"></textarea>
+                            <textarea type="text" formControlName="description" matInput placeholder="Descripción" required></textarea>
                         </mat-form-field>
                     </div>
                     <div>
-                        <input type="file" formControlName="file" placeholder="Imagen" accept="image/png,image/jpeg"> 
+                        <input type="file"  formControlName="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4" (change)="onFileChange($event)"> 
                     </div>
                     <div>
-                        <button mat-raised-button class="btn" (click)="saveNewTask()" type="submit" value="Añadir" style="margin-top: 20px;">Añadir</button>
+                        <button mat-raised-button class="btn" (click)="saveNewTuto()" type="submit" value="Añadir" style="margin-top: 20px;">Añadir</button>
                     </div>
                 </form>
             </div>

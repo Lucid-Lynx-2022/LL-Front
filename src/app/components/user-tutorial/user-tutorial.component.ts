@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TutoService } from '../../services/tuto/tuto.service';
 import { Tuto } from '../../models/tuto/tuto.model'
 import { AuthService } from '../../services/auth.service';
@@ -12,7 +12,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   templateUrl: './user-tutorial.component.html',
   styleUrls: ['./user-tutorial.component.scss']
 })
+
+
+
 export class UserTutorialComponent implements OnInit{
+  MAX_SIZE_FILE_KB =  40000000 //40MB
 
   tuto : Tuto[] = [];
   tutorial: FormGroup;
@@ -25,6 +29,7 @@ export class UserTutorialComponent implements OnInit{
   email: string;
   uid: string;
   displayName: string;
+  image;
   
   constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth, private fb: FormBuilder, private tutoService: TutoService)  { 
     this.tutorial = this.fb.group({
@@ -32,6 +37,8 @@ export class UserTutorialComponent implements OnInit{
       description: '',
     });
   }
+
+
 
   ngOnInit(): void {
    
@@ -52,8 +59,18 @@ export class UserTutorialComponent implements OnInit{
    this.loadPublics();
  }
 
-  saveNewTask(){
-    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, this.uid, this.displayName, this.email, new Date().toLocaleDateString())
+ onFileChange(event: Event) {
+  const target = event.target as HTMLInputElement;
+  if (target.files && target.files.length > 0) {
+    this.image = target.files[0]
+      console.log(target.files[0]);
+  }  
+ }
+ saveNewTuto(){
+   console.log(this.image)
+    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
+                                this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
+                                this.image)
     .then((newTuto) => {
       this.loadPublics();
       this.tutorial.reset();
@@ -74,6 +91,8 @@ export class UserTutorialComponent implements OnInit{
   }
 
   updateThisTuto(tuto : Tuto){
+
+
     this.tutoService.updateTuto(tuto._id as string,this.tutorial.get('title').value, this.tutorial.get('description').value)
     .then((upTuto) => {
       this.loadPublics();
