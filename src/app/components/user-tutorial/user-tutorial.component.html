@@ -9,20 +9,20 @@
                     <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Titulo</mat-label>
-                            <input type="text" formControlName="title" matInput placeholder="Titulo" required>
+                            <input type="text" formControlName="title" matInput placeholder="Titulo" >
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field class="form-input" appearance="outline">
                             <mat-label>Descripción</mat-label>
-                            <textarea type="text" formControlName="description" matInput placeholder="Descripción" required></textarea>
+                            <textarea type="text" formControlName="description" matInput placeholder="Descripción" ></textarea>
                         </mat-form-field>
                     </div>
                     <div>
                         <input type="file"  formControlName="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4" (change)="onFileChange($event)"> 
                     </div>
                     <div>
-                        <button mat-raised-button class="btn" (click)="saveNewTuto()" type="submit" value="Añadir" style="margin-top: 20px;">Añadir</button>
+                        <button mat-raised-button class="btn" (click)="saveNewTuto()" type="submit" value="Añadir" style="margin-top: 20px;">AÑADIR</button>
                     </div>
                 </form>
             </div>
@@ -44,10 +44,12 @@
                 </div>
                 <div class="card-description">
                     <h3>{{public.title}}</h3>
-                    <p>{{public.description}}</p>
-                    <p>Por {{public.displayName}}</p>
-                    <button (click)="deleteThisTuto(public)">Eliminar</button>
-                    <button (click)="openDialog(public)">Editar</button>
+                    <p class="description">{{public.description}}</p>
+                    <p>Por {{public.displayName}}</p>                 
+                </div>
+                <div class="card-buttons">
+                    <button (click)="openDialog(public)" mat-raised-button class="btn" type="submit" value="Editar">EDITAR</button>
+                    <button (click)="deleteThisTuto(public)" mat-raised-button class="btn-delete" type="submit" value="Editar">ELIMINAR</button>
                 </div>
                 </div>
             </div>                      
