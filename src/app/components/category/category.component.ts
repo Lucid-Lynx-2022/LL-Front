@@ -24,4 +24,22 @@ export class CategoryComponent implements OnInit{
     console.log(this.searchText)
   }
 
+  isImage(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.jpeg') || url.endsWith('.png')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isVideo(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.mp4')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }

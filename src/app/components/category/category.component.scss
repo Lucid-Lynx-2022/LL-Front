@@ -17,6 +17,11 @@
     width: 100%;
 }
 
+.searchbar{
+    padding: 10px;
+    font-size: 18px;
+}
+
 .add-container{
     text-align: center;
 }
@@ -46,6 +51,11 @@
 .card{
     flex: 25%;
     padding: 10px;
+    transition: transform .4s;
+}
+  
+.card:hover{
+    transform: scale(1.1);
 }
 
 .card-option{
@@ -63,6 +73,12 @@
 
 .card-description{
     padding: 10px;
+}
+
+.description{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and(min-width: 1441px) {
