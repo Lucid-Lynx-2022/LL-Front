@@ -1,5 +1,6 @@
-<p routerLink="/tutorial" style="cursor: pointer; margin-top: 80px; margin-left:20px; font-size: 24px;">X</p>
+<p (click)="back()" style="cursor: pointer; margin-top: 80px; margin-left:20px; font-size: 24px;">X</p>
 <header>
+  <div class="spinner" *ngIf="loading"></div>
     <div class="header-container">
         <div class="section-content">
             <div class="card">

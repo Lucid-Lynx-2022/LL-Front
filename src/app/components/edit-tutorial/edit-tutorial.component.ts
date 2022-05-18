@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Tuto } from 'src/app/models/tuto/tuto.model';
 import { TutoService } from 'src/app/services/tuto/tuto.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-tutorial',
@@ -21,7 +23,8 @@ export class EditTutorialComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: string, 
                 private tutoService: TutoService, 
                 private fb: FormBuilder, 
-                public dialogRef: MatDialogRef<EditTutorialComponent>) 
+                public dialogRef: MatDialogRef<EditTutorialComponent>,
+                public router: Router) 
   {
     this.tutorial = this.fb.group({
       title: '',
@@ -42,6 +45,12 @@ export class EditTutorialComponent implements OnInit {
     .then((upTuto) => {
       // añadir mensaje emergente de publicacion actualizada con exito
       // refrescar la pagina de las publicaciones para ver los cambios 
+      Swal.fire({
+        icon: 'success',
+        title: 'Tutorial Actualizado',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.tutorial.reset();
       this.close();
     })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common'
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from '../../services/auth.service';
@@ -17,9 +18,11 @@ export class DetailComponent implements OnInit {
   uid: string;
   displayName: string;
 
+  loading : boolean = false;
+
   public: any = [];
 
-  constructor(public auth: AuthService, public router: Router, private route: ActivatedRoute, private tutoService: TutoService, private afAuth: AngularFireAuth)  {
+  constructor(private location: Location,public auth: AuthService, public router: Router, private route: ActivatedRoute, private tutoService: TutoService, private afAuth: AngularFireAuth)  {
     this.loadPublic();
   }
 
@@ -37,8 +40,14 @@ export class DetailComponent implements OnInit {
   }
 
   async loadPublic(): Promise<void>{
+    this.loading = true;
     const _id = this.route.snapshot.paramMap.get('_id');
     this.public = await this.tutoService.getUserById(String(_id));
+    this.loading = false;
+  }
+
+  back(){
+    this.location.back()
   }
 
   isImage(url : string){

@@ -31,7 +31,6 @@ import { CategoryComponent } from './components/category/category.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { EditTutorialComponent } from './components/edit-tutorial/edit-tutorial.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -46,8 +45,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     UserTutorialComponent,
     CategoryComponent,
     DetailComponent,
-    EditTutorialComponent,
-    SpinnerComponent
+    EditTutorialComponent
   ],
   imports: [
     BrowserModule,

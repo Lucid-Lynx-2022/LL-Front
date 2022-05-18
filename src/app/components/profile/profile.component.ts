@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   
+  loading : boolean = false;
+
   email: string;
   uid: string;
   displayName: string;
@@ -18,10 +20,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
    
-     if( !this.auth.userLoggedIn) {
+    if( !this.auth.userLoggedIn) {
       this.router.navigate(['/home']);
-     }
+    }
 
+    this.loading = true;
     this.afAuth.currentUser.then((user) => {
       this.email =user.email
       //user.getIdToken
@@ -32,6 +35,7 @@ export class ProfileComponent implements OnInit {
       }else{
         this.displayName = user.displayName
       }
+      this.loading = false;
     });
   }
 
