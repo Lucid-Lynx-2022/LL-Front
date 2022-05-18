@@ -9,14 +9,17 @@ import { Tuto } from '../../models/tuto/tuto.model'
 export class CategoryComponent implements OnInit{
 
   tuto : Tuto[] = [];
+  loading : boolean = false;
   searchText: any;
   constructor(private tutoService : TutoService){
     this.loadPublics();
   }
 
   loadPublics(){
+    this.loading = true;
     this.tutoService.loadAllTutos().then(tuto => {
       this.tuto = tuto;
+      this.loading = false;
     })
   }
   
