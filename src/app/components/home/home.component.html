@@ -20,47 +20,38 @@
             <div class="featured-container">
                 <div class="featured-tutorial-container">
                     <div class="section-title">
-                        <h3>Tutorial Destacado</h3>
+                        <h3>Ultimo tutorial añadido</h3>
                     </div>
-                    <div class="featured-content">
-                      <a><img class="featured-img" src="https://c0.wallpaperflare.com/preview/14/791/735/flatlay-children-craft-diy-school.jpg"></a>
-                      <h3>Manualidades magícas</h3>
-                      <h4>En este tutorial podrás ver manualidades para tus trucos de magía.</h4>
-                      <p>Por Miguelito33</p>
+                    <div class="featured-content" *ngFor="let public of Recenttuto" >
+                      <a>
+                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                          <img class="card-img" src="{{public.image}}">
+                        </div>
+                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                          <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
+                        </div> 
+                      </a>
+                      <h3>{{public.title}}</h3>
+                      <h4>{{public.date}}</h4>
+                      <p>Por {{public.displayName}}</p>
                     </div>
                 </div>
                 <div class="recomendations-container">
                     <div class="section-title">
-                        <h3>Tutoriales Destacados</h3>
+                        <h3>Añadidos recientemente</h3>
                     </div>
-                    <div class="option">
+                    <div class="option" *ngFor="let public of Recenttutos" class="card">
                       <div>
-                        <a><img class="img-option" src="https://c0.wallpaperflare.com/preview/955/464/977/backgrounds-flatlay-craft-diy-school.jpg"></a>
-                      </div>
+                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                          <img class="card-img" src="{{public.image}}">
+                        </div>
+                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                            <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
+                        </div>                      </div>
                       <div class="option-description">
-                        <p><strong>Afilador casero</strong></p>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                    <div class="option">
-                      <div>
-                        <a><img class="img-option" src="https://c0.wallpaperflare.com/preview/763/165/124/flatlay-craft-diy-school-arts.jpg"></a>
-                      </div>
-                      <div class="option-description">
-                        <p><strong>Afilador casero</strong></p>
-                        <p>🖤12345</p>
-                        <p>Por XxPedritoxX</p>
-                      </div>
-                    </div>
-                    <div class="option">
-                      <div>
-                        <a><img class="img-option" src="https://c0.wallpaperflare.com/preview/418/350/388/flatlay-craft-diy-gifts.jpg"></a>
-                      </div>
-                      <div class="option-description">
-                        <p><strong>Afilador casero</strong></p>
-                        <p>🖤11213</p>
-                        <p>Por Pepelu456</p>
+                        <p><strong>{{public.title}}</strong></p>
+                        <p>{{public.date}}</p>
+                        <p>Por {{public.displayName}}</p>
                       </div>
                     </div>
                 </div>

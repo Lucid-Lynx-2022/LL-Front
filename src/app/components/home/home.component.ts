@@ -11,11 +11,23 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class HomeComponent {
 
   tuto : Tuto[] = [];
+  Recenttutos : Tuto[] = [];
+  Recenttuto : Tuto[] = [];
 
   loading : boolean = false;
 
   constructor(public afAuth: AngularFireAuth, private tutoService : TutoService){
     this.loadPublics();
+    this.loadRecentPublics();
+  }
+  
+  loadRecentPublics(){
+    this.loading = true;
+    this.tutoService.loadRecentTutos().then(tutos => {
+      this.Recenttutos = tutos;
+      this.Recenttuto.push(this.Recenttutos[0])
+      this.loading = false;
+    })
   }
 
   loadPublics(){

@@ -8,8 +8,8 @@ import { Tuto } from '../../models/tuto/tuto.model';
 export class TutoService {
   TOKEN = '2E%[/QAfv-]u7uUttuC]d@MWnh]{rgVm?v}vcaZa%GA_uePj(pZ+-2&?Tpg_/gQEMRF4(?jt=pR_Fz&2T%@W[U{f4J6T32,h77#vtAq=cu;A8K_@t!dNhU&%j_uZSTEWy:DyTgq4f{$6=dRr+9F3%fK-gBaYyxt,H*ng,3Y$Q8*fHp{[*SZjk*a9*.(8##jy:4hqTehH}wvfpMptwv{XgE7L[{Q[g=CHpVX7k3hi#VcvKaia&+?f?6KVR;/(Sy:{:!aq6%$nv2N*)+&+566TNE(N)Z;bSM#:3Rq5rxQdwytB'
 
-  urlAPI = "https://lucidlynx22.herokuapp.com/publics"
-  //urlAPI = "http://localhost:4000/publics/"
+  //urlAPI = "https://lucidlynx22.herokuapp.com/publics"
+  urlAPI = "http://localhost:4000/publics/"
 
   constructor() { }
 
@@ -22,7 +22,14 @@ export class TutoService {
       }})
       .then(response => response.data)
   }
-
+  loadRecentTutos(): Promise<Tuto[]> {
+    console.log(this.urlAPI + '?recent=true')
+    return axios.get(this.urlAPI + '?recent=true',
+    {headers: {
+      'token': this.TOKEN // do not forget this  
+      }})
+      .then(response => response.data)
+  }
   loadAllTutos(): Promise<Tuto[]> {
     return axios.get(this.urlAPI,
       {headers: {
