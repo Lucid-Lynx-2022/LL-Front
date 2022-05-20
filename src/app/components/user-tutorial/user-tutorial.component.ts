@@ -24,8 +24,6 @@ export class UserTutorialComponent implements OnInit{
   tuto : Tuto[] = [];
   tutorial: FormGroup;
 
-  loading : boolean = false;
-
   newTutoUid = "";
   newTutoAutor = "";
   newTutoEmail = "";
@@ -67,14 +65,20 @@ export class UserTutorialComponent implements OnInit{
   const target = event.target as HTMLInputElement;
   if(target.files[0].size > this.MAX_SIZE_FILE_KB){
     //mensaje emergente de tamaño de fichero excedido
+    Swal.fire({
+      icon: 'error',
+      title: 'tamaño de fichero excedido',
+      showConfirmButton: false,
+      timer: 1500
+  });
   }
   if (target.files && target.files.length > 0) {
     this.image = target.files[0]
   }  
  }
  saveNewTuto(){
-  this.loading = true;
-    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
+      Swal.showLoading();
+      this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
                                 this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
                                 this.image)
     .then((newTuto) => {
@@ -88,22 +92,33 @@ export class UserTutorialComponent implements OnInit{
       this.loadMyPublics();
       this.tutorial.reset();
     })
+    .catch((error) => {
+      // añadir mensaje emergente de publicacion añadida correctamente
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe completar todos los campos',
+        showConfirmButton: false,
+        timer: 1500
+    });
+    })
+
+    
   }
 
   loadMyPublics(){
-    this.loading = true;
+    Swal.showLoading();
     this.tutoService.loadTuto(this.uid).then(tuto => {
       this.tuto = tuto;
-      this.loading = false;
+      Swal.close();
     })
   }
 
   deleteThisTuto(tuto : Tuto){
-    this.loading = true;
+    Swal.showLoading();    
     this.tutoService.deleteTuto(tuto._id as string)
       .then(response => {
         this.tuto = this.tuto.filter(t => t._id !== tuto._id)
-        this.loading = false;
         Swal.fire({
           icon: 'success',
           title: 'Tutorial Eliminado',
