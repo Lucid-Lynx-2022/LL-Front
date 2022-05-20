@@ -22,7 +22,7 @@
                     <div class="section-title">
                         <h3>Ultimo tutorial añadido</h3>
                     </div>
-                    <div class="featured-content" *ngFor="let public of Recenttutos | slice:0:1; let i=index" >
+                    <div class="featured-content" *ngFor="let public of RecentTutos | slice:0:1; let i=index" >
                       <a>
                         <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
                           <img class="card-img" src="{{public.image}}">
@@ -40,7 +40,7 @@
                     <div class="section-title">
                         <h3>Añadidos recientemente</h3>
                     </div>
-                    <div class="option" *ngFor="let public of Recenttutos" class="card">
+                    <div class="option" *ngFor="let public of RecentTutos" class="card">
                       <div>
                         <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
                           <img class="card-img" src="{{public.image}}">
@@ -61,7 +61,7 @@
                     <h3>Últimos Tutoriales</h3>
                 </div>
                 <div class="section-content">
-                  <div *ngFor="let public of tuto | slice:0:10; let i=index" class="card">
+                  <div *ngFor="let public of HomeTutos | slice:0:10; let i=index" class="card">
                     <div class="card-option">
                       <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
                         <img class="card-img" src="{{public.image}}">

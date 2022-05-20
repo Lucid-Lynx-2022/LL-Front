@@ -10,9 +10,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class HomeComponent {
 
-  tuto : Tuto[] = [];
-  Recenttutos : Tuto[] = [];
-  Recenttuto : Tuto[] = [];
+  HomeTutos : Tuto[] = [];
+  RecentTutos : Tuto[] = [];
 
   loading : boolean = false;
 
@@ -24,8 +23,7 @@ export class HomeComponent {
   loadRecentPublics(){
     this.loading = true;
     this.tutoService.loadRecentTutos().then(tutos => {
-      this.Recenttutos = tutos;
-      this.Recenttuto.push(this.Recenttutos[0])
+      this.RecentTutos = tutos;
       this.loading = false;
     })
   }
@@ -33,7 +31,7 @@ export class HomeComponent {
   loadPublics(){
     this.loading = true;
     this.tutoService.loadHomeTutos().then(tuto => {
-      this.tuto = tuto;
+      this.HomeTutos = tuto;
       this.loading = false;
     })
   }
