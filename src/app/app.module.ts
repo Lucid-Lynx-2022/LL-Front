@@ -33,6 +33,7 @@ import { EditTutorialComponent } from './components/edit-tutorial/edit-tutorial.
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BymeacoffeeComponent } from './components/bymeacoffee/bymeacoffee.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { BymeacoffeeComponent } from './components/bymeacoffee/bymeacoffee.compo
     UserTutorialComponent,
     CategoryComponent,
     DetailComponent,
+    EditTutorialComponent,
     BymeacoffeeComponent
   ],
   imports: [
