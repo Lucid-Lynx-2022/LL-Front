@@ -25,10 +25,10 @@
                     <div class="featured-content" *ngFor="let public of RecentTutos | slice:0:1; let i=index" >
                       <a>
                         <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
-                          <img class="card-img" src="{{public.image}}">
+                          <img class="featured-img" src="{{public.image}}">
                         </div>
                         <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
-                          <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
+                          <video class="featured-img" src="{{public.image}}" autoplay muted loop></video>
                         </div> 
                       </a>
                       <h3>{{public.title}}</h3>
@@ -40,14 +40,17 @@
                     <div class="section-title">
                         <h3>Añadidos recientemente</h3>
                     </div>
-                    <div class="option" *ngFor="let public of RecentTutos" class="card">
+                    <div class="option" *ngFor="let public of RecentTutos">
                       <div>
-                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
-                          <img class="card-img" src="{{public.image}}">
-                        </div>
-                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
-                            <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
-                        </div>                      </div>
+                        <a>
+                          <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                            <img class="img-option" src="{{public.image}}">
+                          </div>
+                          <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                              <video class="img-option" src="{{public.image}}"></video>
+                          </div>
+                        </a>                      
+                      </div>
                       <div class="option-description">
                         <p><strong>{{public.title}}</strong></p>
                         <p>{{public.date}}</p>
@@ -67,7 +70,7 @@
                         <img class="card-img" src="{{public.image}}">
                       </div>
                       <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
-                          <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
+                          <video class="card-img" src="{{public.image}}" ></video>
                       </div>
                       <div class="card-description">
                         <h3>{{public.title}}</h3>
