@@ -7,6 +7,7 @@
             <div class="section-title">
                 <h3>Todos los Tutoriales</h3>
             </div>
+            <div class="spinner" *ngIf="loading"></div>
             <div class="section-content">
             <div *ngFor="let public of tuto | filter:searchText" class="card">
                 <div class="card-option">

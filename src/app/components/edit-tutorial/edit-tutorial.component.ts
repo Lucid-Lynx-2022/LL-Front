@@ -40,7 +40,7 @@ export class EditTutorialComponent implements OnInit {
   }
 
   updateTuto(){
-    Swal.showLoading();
+
     this.tutoService.updateTuto(this.data as string,this.tutorial.get('title').value, this.tutorial.get('description').value, this.image)
     .then((upTuto) => {
       // añadir mensaje emergente de publicacion actualizada con exito
@@ -53,16 +53,6 @@ export class EditTutorialComponent implements OnInit {
       });
       this.tutorial.reset();
       this.close();
-    })
-    .catch((error) => {
-      // añadir mensaje emergente de publicacion añadida correctamente
-      Swal.close();
-      Swal.fire({
-        icon: 'error',
-        title: 'Error al actualizar el tutorial',
-        showConfirmButton: false,
-        timer: 1500
-    });
     })
     
   }

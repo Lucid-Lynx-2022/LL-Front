@@ -15,7 +15,7 @@ export class AuthService {
     constructor(private router: Router, private afAuth: AngularFireAuth) {
         this.userLoggedIn = false;
 
-        this.afAuth.onAuthStateChanged((user) => {// set up a subscription to always know the login status of the user
+        this.afAuth.onAuthStateChanged((user) => {              // set up a subscription to always know the login status of the user
             if (user) {
                 this.userLoggedIn = true;
             } else {
@@ -42,7 +42,7 @@ export class AuthService {
         return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
             .then((result) => {
                 let emailLower = user.email.toLowerCase();
-                result.user.sendEmailVerification();// immediately send the user a verification email
+                result.user.sendEmailVerification();                    // immediately send the user a verification email
             })
             .catch(error => {
                 console.log('Auth Service: signup error', error);
@@ -70,7 +70,6 @@ export class AuthService {
             this.router.navigate(['/home']); 
         })
         .catch((error) => {
-
             console.log(error);
         });
     }
