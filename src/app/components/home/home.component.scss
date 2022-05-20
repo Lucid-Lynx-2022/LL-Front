@@ -76,26 +76,6 @@ section{
     width: 100%;
 }
 
-.spinner{
-    border: 4px solid rgba(0, 0, 0, 0.10);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border-left-color: #004643;
-
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin{
-    0%{
-        transform: rotate(0deg);
-    }
-
-    100%{
-        transform: rotate(360deg);
-    }
-}
-
 .section-container{
     margin: 30px 300px;
 }
@@ -180,6 +160,7 @@ section{
     width: 100%;
     max-height: 150px;
     border-radius: 5px;
+    background-color: black;
 }
 
 .card-description{
@@ -197,6 +178,9 @@ section{
     .card{
         max-width: 325px;
     }
+    .card-option{
+        max-width: 300px;
+    }
     
 }
 
@@ -204,12 +188,15 @@ section{
     .section-container{
         margin: 30px 150px;
     }
+    .card{
+        max-width: 285px
+    }
 };
 
 @media screen and (max-width: 1024px) {
     .featured-tutorial-container, .recomendations-container{
         flex: 100%;
-        padding: 0;
+        padding: 20px;
     }
     .featured-content{
         padding: 0;
@@ -224,6 +211,7 @@ section{
         border-top:1px solid #e8e4e6;
     }
     .card {
+        max-width: 100%;
         flex: 50%;
         padding-bottom: 20px;
     }
@@ -247,9 +235,6 @@ section{
     }
     .card {
         flex: 100%;
-    }
-    .card-img{
-        max-height: 350px;
     }
 }
 
