@@ -53,6 +53,9 @@ export class EditTutorialComponent implements OnInit {
       });
       this.tutorial.reset();
       this.close();
+      this.router.navigate(['/home'], { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/tutorials']);
+      });
     })
     .catch((error) => {
       // añadir mensaje emergente de publicacion añadida correctamente
