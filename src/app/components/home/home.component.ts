@@ -32,7 +32,7 @@ export class HomeComponent {
 
   loadPublics(){
     this.loading = true;
-    this.tutoService.loadAllTutos().then(tuto => {
+    this.tutoService.loadHomeTutos().then(tuto => {
       this.tuto = tuto;
       this.loading = false;
     })

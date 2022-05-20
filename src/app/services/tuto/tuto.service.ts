@@ -15,7 +15,6 @@ export class TutoService {
 
 
   loadTuto(uid:string): Promise<Tuto[]> {
-    console.log(this.urlAPI + '?userId=' + uid)
     return axios.get(this.urlAPI + '?userId=' + uid,
     {headers: {
       'token': this.TOKEN // do not forget this  
@@ -23,7 +22,6 @@ export class TutoService {
       .then(response => response.data)
   }
   loadRecentTutos(): Promise<Tuto[]> {
-    console.log(this.urlAPI + '?recent=true')
     return axios.get(this.urlAPI + '?recent=true',
     {headers: {
       'token': this.TOKEN // do not forget this  
@@ -37,7 +35,13 @@ export class TutoService {
         }})
       .then(response => response.data)
   }
-
+  loadHomeTutos(): Promise<Tuto[]> {
+    return axios.get(this.urlAPI + '?home=true',
+      {headers: {
+        'token': this.TOKEN // do not forget this 
+        }})
+      .then(response => response.data)
+  }
   saveNewTuto(newTutoTitle: string, newTutoDescription: string, newTutoUid: string, newTutoAutor: string, newTutoEmail: string, newTutoFecha: string, image: FormData){
     return axios.post(this.urlAPI, { title: newTutoTitle, description: newTutoDescription, userId: newTutoUid, displayName: newTutoAutor, email: newTutoEmail, date: newTutoFecha, image:image },
       {headers: {
