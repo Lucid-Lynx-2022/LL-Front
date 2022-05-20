@@ -31,6 +31,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { EditTutorialComponent } from './components/edit-tutorial/edit-tutorial.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BymeacoffeeComponent } from './components/bymeacoffee/bymeacoffee.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     UserTutorialComponent,
     CategoryComponent,
     DetailComponent,
-    EditTutorialComponent
+    EditTutorialComponent,
+    BymeacoffeeComponent
   ],
   imports: [
     BrowserModule,
