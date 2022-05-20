@@ -40,7 +40,7 @@
                     <img class="card-img" src="{{public.image}}">
                 </div>
                 <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
-                    <video class="card-img" src="{{public.image}}" autoplay muted loop></video>
+                    <video class="card-img" src="{{public.image}}"></video>
                 </div>
                 <div class="card-description">
                     <h3>{{public.title}}</h3>
