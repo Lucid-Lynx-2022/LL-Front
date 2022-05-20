@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TutoService } from '../../services/tuto/tuto.service';
 import { Tuto } from '../../models/tuto/tuto.model'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,6 @@ export class HomeComponent {
   HomeTutos : Tuto[] = [];
   RecentTutos : Tuto[] = [];
 
-  loading : boolean = false;
 
   constructor(public afAuth: AngularFireAuth, private tutoService : TutoService){
     this.loadPublics();
@@ -21,18 +21,18 @@ export class HomeComponent {
   }
   
   loadRecentPublics(){
-    this.loading = true;
-    this.tutoService.loadRecentTutos().then(tutos => {
+    Swal.showLoading();
+      this.tutoService.loadRecentTutos().then(tutos => {
       this.RecentTutos = tutos;
-      this.loading = false;
+      Swal.close();
     })
   }
 
   loadPublics(){
-    this.loading = true;
+    Swal.showLoading();
     this.tutoService.loadHomeTutos().then(tuto => {
       this.HomeTutos = tuto;
-      this.loading = false;
+      Swal.close();
     })
   }
 
