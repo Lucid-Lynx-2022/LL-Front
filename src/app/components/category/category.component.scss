@@ -83,12 +83,14 @@
     background-color: #e8e4e6;
     border-radius: 5px;
     height: 375px;
+    cursor: pointer;
 }
 
 .card-img{
     width: 100%;
     max-height: 150px;
     border-radius: 5px;
+    background-color: black;
 }
 
 .card-description{
@@ -105,6 +107,10 @@
     .card{
         max-width: 325px;
     }
+
+    .card-option{
+        max-width: 300px;
+    }
     
 }
 
@@ -112,10 +118,14 @@
     .container{
         margin: 80px 150px;
     }
+    .card{
+        max-width: 285px
+    }
 };
 
 @media screen and (max-width: 1024px) {
     .card {
+        max-width: 100%;
         flex: 50%;
         padding-bottom: 20px;
     }
@@ -133,9 +143,6 @@
 @media screen and (max-width: 768px) {
     .card {
         flex: 100%;
-    }
-    .card-img{
-        max-height: 350px;
     }
 }
 

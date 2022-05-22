@@ -1,18 +1,17 @@
-<header>
-  <div class="spinner" *ngIf="loading"></div>
-    <div class="header-container">
-        <div class="section-content">
-            <div class="card">
-              <div class="card-option">
-                <div>
-                  <img class="card-img" src="https://c0.wallpaperflare.com/preview/638/559/745/hands-textures-craft-diy-sewing.jpg">
-                </div>
-                <div class="card-description">
-                  <p>{{displayName}}</p>
-                  <p>{{email}}</p>
-                </div>
-              </div>
-            </div>
-        </div>
+<div class="container">
+  <div class="profile-container">
+    <div class="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png">
     </div>
-</header>
+    <div class="data">
+      <div class="data-email">
+        <label>Email</label>
+        <h2>{{email}}</h2>
+      </div>
+      <div class="data-displayname">
+        <label>Nombre</label>
+        <h2>{{displayName}}</h2>
+      </div>
+    </div>
+  </div>
+</div>

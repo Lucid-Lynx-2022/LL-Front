@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  
-  loading : boolean = false;
 
   email: string;
   uid: string;
@@ -24,7 +22,6 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/home']);
     }
 
-    this.loading = true;
     this.afAuth.currentUser.then((user) => {
       this.email =user.email
       //user.getIdToken
@@ -35,7 +32,6 @@ export class ProfileComponent implements OnInit {
       }else{
         this.displayName = user.displayName
       }
-      this.loading = false;
     });
   }
 

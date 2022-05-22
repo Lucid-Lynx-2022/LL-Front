@@ -1,72 +1,57 @@
 *{
     box-sizing: border-box;
+    color: #004643;
 }
 
-header{
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    width: 100%;
-    padding: 10px;
-    color: white;
+    margin-top: 200px;
 }
 
-.spinner{
-    border: 4px solid rgba(0, 0, 0, 0.10);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border-left-color: #004643;
-
-    animation: spin 1s linear infinite;
+.profile-container{
+    border: 10px solid #004643;
+    border-radius: 50px;
+    margin-bottom: 150px;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgb(65, 65, 65);
 }
 
-@keyframes spin{
-    0%{
-        transform: rotate(0deg);
-    }
-
-    100%{
-        transform: rotate(360deg);
-    }
+.icon{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(65, 65, 65);
 }
 
-.header-container{
-    text-align: center;
-    font-size: 18px;
-}
-
-.card{
-    flex: 25%;
-    padding: 10px;
-}
-
-.card-option{
-    box-shadow: 0 4px 8px 0 black;
-    background-color: #004643;
-    border-radius: 5px;
-}
-
-.card-img{
-    width: 100%;
+.icon img{
     max-height: 250px;
-    border-radius: 5px;
+    max-width: 250px;
 }
 
-.card-description{
-    padding: 10px;
-    width: 100%;
+.data{
+    padding-top: 10px;
 }
 
-@media screen and (max-width: 420px) {
-    .header-container {
+label{
+    color: rgba(65, 65, 65, 0.50);
+}
+
+@media screen and(max-width: 380px) {
+    .icon img{
+        max-height: 100px;
+        max-width: 100px;
+    }
+
+    .icon{
+        text-align: center;
+    }
+
+    .profile-container{
+        padding: 10px;
+    }
+
+    h2{
         font-size: 14px;
     }
-}
-
-@media screen and (max-width: 320px) {
-    .header-container {
-        font-size: 11px;
-    }
+    
 }

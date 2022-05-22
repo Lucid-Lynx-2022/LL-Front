@@ -2,71 +2,82 @@
     box-sizing: border-box;
 }
 
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 800px;
-    width: 100%;
-    padding: 10px;
-    color: white;
+.btn-back{
+    cursor: pointer;
+    margin-top: 80px;
+    margin-left:20px;
+    font-size: 24px;
 }
 
-.spinner{
-    border: 4px solid rgba(0, 0, 0, 0.10);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border-left-color: #004643;
-
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin{
-    0%{
-        transform: rotate(0deg);
-    }
-
-    100%{
-        transform: rotate(360deg);
-    }
-}
-
-.header-container{
-    text-align: center;
+p{
     font-size: 18px;
 }
 
-.card{
-    flex: 25%;
-    padding: 10px;
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.card-option{
-    box-shadow: 0 4px 8px 0 black;
-    background-color: #004643;
-    border-radius: 5px;
+.detail-img{
+    width: 1280px;
+    height: 720px;
 }
 
-.card-img{
-    width: 100%;
-    max-height: 250px;
-    border-radius: 5px;
+.img-video{
+    text-align: center;
 }
 
-.card-description{
-    padding: 10px;
-    width: 100%;
+.detail-description{
+    padding: 50px 250px;
 }
 
-@media screen and (max-width: 420px) {
-    .header-container {
+.option{
+    padding: 5px;
+}
+
+.detail-principal{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and(max-width: 1440px){
+    .detail-description{
+        padding: 50px 150px;
+    }
+}
+
+@media screen and(max-width: 1024px){
+    .detail-description{
+        padding: 50px 100px;
+    }
+}
+
+@media screen and(max-width: 1280px){
+    .detail-img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and(max-width: 768px){
+    .detail-description{
+        padding: 50px 50px;
+    }
+
+    p{
         font-size: 14px;
     }
 }
 
-@media screen and (max-width: 320px) {
-    .header-container {
-        font-size: 11px;
+@media screen and(max-width: 430px){
+    .detail-description{
+        padding: 50px 10px;
     }
+
+    .detail-principal{
+        display: inline-block;
+    }
+
 }

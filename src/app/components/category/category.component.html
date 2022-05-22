@@ -1,6 +1,6 @@
 <div class="container">
     <div class="add-tutorial">
-        <input class="searchbar" type="text" name="search" [(ngModel)]="searchText" placeholder="search by ">
+        <input class="searchbar" type="text" name="search" [(ngModel)]="searchText" placeholder="Buscar por ">
     </div>
     <div class="tutorial-container">
         <div class="table-container">
@@ -9,11 +9,11 @@
             </div>
             <div class="section-content">
             <div *ngFor="let public of tuto | filter:searchText" class="card">
-                <div class="card-option">
-                    <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                <div class="card-option" [routerLink]="['/detail', public._id]">
+                    <div *ngIf="isImage(public.image)">
                         <img class="card-img" src="{{public.image}}">
                     </div>
-                    <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                    <div *ngIf="isVideo(public.image)">
                         <video class="card-img" src="{{public.image}}" ></video>
                     </div>
                     <div class="card-description">

@@ -64,11 +64,11 @@
                 </div>
                 <div class="section-content">
                   <div *ngFor="let public of HomeTutos | slice:0:10; let i=index" class="card">
-                    <div class="card-option">
-                      <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                    <div class="card-option" [routerLink]="['/detail', public._id]">
+                      <div *ngIf="isImage(public.image)">
                         <img class="card-img" src="{{public.image}}">
                       </div>
-                      <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                      <div *ngIf="isVideo(public.image)">
                           <video class="card-img" src="{{public.image}}" ></video>
                       </div>
                       <div class="card-description">
