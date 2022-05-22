@@ -52,7 +52,7 @@ export class DetailComponent implements OnInit {
 
   isImage(url : string){
     if(url === undefined) return false;
-    if(url.endsWith('.jpeg') || url.endsWith('.png')){
+    if(url.endsWith('.jpeg') || url.endsWith('.png')|| url.endsWith('.gif')){
       return true;
     }else{
       return false;
@@ -61,7 +61,7 @@ export class DetailComponent implements OnInit {
 
   isVideo(url : string){
     if(url === undefined) return false;
-    if(url.endsWith('.mp4')){
+    if(url.endsWith('.mp4') ){
       return true;
     }else{
       return false;

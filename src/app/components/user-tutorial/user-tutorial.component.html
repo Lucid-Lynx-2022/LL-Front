@@ -19,7 +19,7 @@
                         </mat-form-field>
                     </div>
                     <div>
-                        <input type="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4" (change)="onFileChange($event)"> 
+                        <input type="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4,image/gif" (change)="onFileChange($event)"> 
                     </div>
                     <div>
                         <button mat-raised-button class="btn" (click)="saveNewTuto()" type="submit" value="Añadir" style="margin-top: 20px;">AÑADIR</button>
@@ -44,7 +44,6 @@
                 </div>
                 <div class="card-description">
                     <h3>{{public.title}}</h3>
-                    <p class="description">{{public.description}}</p>
                     <p>Por {{public.displayName}}</p>                 
                     <p>Por {{public.date}}</p>                 
                 </div>

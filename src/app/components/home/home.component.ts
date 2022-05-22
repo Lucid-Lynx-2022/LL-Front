@@ -38,7 +38,7 @@ export class HomeComponent {
 
   isImage(url : string){
     if(url === undefined) return false;
-    if(url.endsWith('.jpeg') || url.endsWith('.png')){
+    if(url.endsWith('.jpeg') || url.endsWith('.png') || url.endsWith('.gif')){
       return true;
     }else{
       return false;

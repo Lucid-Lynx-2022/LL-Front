@@ -19,7 +19,7 @@
             <div class="featured-container">
                 <div class="featured-tutorial-container">
                     <div class="section-title">
-                        <h3>Ultimo tutorial añadido</h3>
+                        <h3>Primer tutorial añadido</h3>
                     </div>
                     <div class="featured-content" *ngFor="let public of RecentTutos | slice:0:1; let i=index" >
                       <a>
@@ -30,14 +30,14 @@
                           <video class="featured-img" src="{{public.image}}" autoplay muted loop></video>
                         </div> 
                       </a>
-                      <h3>{{public.title}}</h3>
+                      <h3><strong>{{public.title}}</strong></h3>
                       <h4>{{public.date}}</h4>
                       <p>Por {{public.displayName}}</p>
                     </div>
                 </div>
                 <div class="recomendations-container">
                     <div class="section-title">
-                        <h3>Añadidos recientemente</h3>
+                        <h3>Primeros tutoriales</h3>
                     </div>
                     <div class="option" *ngFor="let public of RecentTutos">
                       <div>
@@ -73,7 +73,6 @@
                       </div>
                       <div class="card-description">
                         <h3>{{public.title}}</h3>
-                        <p class="description">{{public.description}}</p>
                         <p>Por {{public.displayName}}</p>
                       </div>
                     </div>
