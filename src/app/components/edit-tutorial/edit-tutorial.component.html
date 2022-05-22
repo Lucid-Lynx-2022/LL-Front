@@ -8,7 +8,7 @@
                 <div>
                     <mat-form-field class="form-input" appearance="outline">
                         <mat-label>Titulo</mat-label>
-                        <input type="text" formControlName="title" matInput placeholder="Titulo" >
+                        <input autocomplete="false" name="hidden" type="text" formControlName="title" matInput placeholder="Titulo" >
                     </mat-form-field>
                 </div>
                 <div>
@@ -18,7 +18,7 @@
                     </mat-form-field>
                 </div>
                 <div>
-                    <input type="file"  formControlName="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4" (change)="onFileChange($event)"> 
+                    <input type="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4" (change)="onFileChange($event)"> 
                 </div>
                 <div>
                     <button mat-raised-button class="btn" (click)="updateTuto()" type="submit" value="Actualizar" style="margin-top: 20px;">Actualizar</button>

@@ -43,6 +43,12 @@ export class AuthService {
             .then((result) => {
                 let emailLower = user.email.toLowerCase();
                 result.user.sendEmailVerification();// immediately send the user a verification email
+                Swal.fire({
+                    icon: 'success',
+                    title: 'SignUp success, verify your email',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
             })
             .catch(error => {
                 console.log('Auth Service: signup error', error);
@@ -63,7 +69,7 @@ export class AuthService {
             console.log('You have been successfully logged in!');
             Swal.fire({
             icon: 'success',
-            title: 'Loging success',
+            title: 'Login success',
             showConfirmButton: false,
             timer: 1500
             });

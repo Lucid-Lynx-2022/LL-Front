@@ -42,7 +42,7 @@ export class TutoService {
         }})
       .then(response => response.data)
   }
-  saveNewTuto(newTutoTitle: string, newTutoDescription: string, newTutoUid: string, newTutoAutor: string, newTutoEmail: string, newTutoFecha: string, image: FormData){
+  saveNewTuto(newTutoTitle: string, newTutoDescription: string, newTutoUid: string, newTutoAutor: string, newTutoEmail: string, newTutoFecha: string, image:File){
     return axios.post(this.urlAPI, { title: newTutoTitle, description: newTutoDescription, userId: newTutoUid, displayName: newTutoAutor, email: newTutoEmail, date: newTutoFecha, image:image },
       {headers: {
         'token': this.TOKEN, // do not forget this 
@@ -52,7 +52,7 @@ export class TutoService {
       .then(response => response.data)
 
   }
-  updateTuto( id : string , newTutoTitle, newTutoDescription, image:FormData){
+  updateTuto( id : string , newTutoTitle, newTutoDescription, image:File){
 
     if(newTutoTitle && newTutoDescription && image){
       // se actualizan los 3 campos
@@ -62,7 +62,7 @@ export class TutoService {
         'accept': 'application/json',
          'content-type': 'multipart/form-data' // do not forget this 
         }})
-      .then(response => response.data)
+        .then(response => response.data)
 
     }else if (newTutoTitle && !newTutoDescription && !image){
       // solo se actualiza el titulo

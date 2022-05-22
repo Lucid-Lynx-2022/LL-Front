@@ -18,7 +18,8 @@ export class EditTutorialComponent implements OnInit {
 
   tuto : Tuto[] = [];
   tutorial: FormGroup;
-  image = undefined;
+  image: File = undefined;
+  target: HTMLInputElement;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: string, 
                 private tutoService: TutoService, 
@@ -40,17 +41,58 @@ export class EditTutorialComponent implements OnInit {
   }
 
   updateTuto(){
+    if(this.tutorial.get('title').value){
+      if(this.tutorial.get('title').value.trim() === ""){
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Debe de insertar caracteres si quiere actualizar titulo',
+          showConfirmButton: false,
+          timer: 1500
+      });
+        return 
+      }
+    }
+    if(this.tutorial.get('description').value){
+      if(this.tutorial.get('description').value.trim() === ""){
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Debe de insertar caracteres si quiere actualizar descripcion',
+          showConfirmButton: false,
+          timer: 1500
+      });
+        return 
+      }
+    }
+    if(!this.image && !this.tutorial.get('title').value && !this.tutorial.get('description').value){
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe completar alguno de los campos',
+        showConfirmButton: false,
+        timer: 1500
+    });
+      return 
+    }
+
     Swal.showLoading();
     this.tutoService.updateTuto(this.data as string,this.tutorial.get('title').value, this.tutorial.get('description').value, this.image)
-    .then((upTuto) => {
-      // añadir mensaje emergente de publicacion actualizada con exito
-      // refrescar la pagina de las publicaciones para ver los cambios 
+    .then((upTuto) => { 
       Swal.fire({
         icon: 'success',
         title: 'Tutorial Actualizado',
         showConfirmButton: false,
         timer: 1500
       });
+      // resetar input file
+      try {
+        this.target.value = "";
+        this.image = null
+        this.target= null
+      } catch (error) {
+        
+      }
       this.tutorial.reset();
       this.close();
       this.router.navigate(['/home'], { skipLocationChange: true }).then(() => {
@@ -58,13 +100,12 @@ export class EditTutorialComponent implements OnInit {
       });
     })
     .catch((error) => {
-      // añadir mensaje emergente de publicacion añadida correctamente
       Swal.close();
       Swal.fire({
         icon: 'error',
-        title: 'Error al actualizar el tutorial',
+        title: 'Error: ya exite una publicacion con el mismo titulo',
         showConfirmButton: false,
-        timer: 1500
+        timer: 3000
     });
     })
     
@@ -73,11 +114,19 @@ export class EditTutorialComponent implements OnInit {
   onFileChange(event: Event) {
     const target = event.target as HTMLInputElement;
     if(target.files[0].size > this.MAX_SIZE_FILE_KB){
-      //mensaje emergente de tamaño de fichero excedido
-    }
-    if (target.files && target.files.length > 0) {
+      this.image = null
+      this.target= null
+      target.value = "";
+  
+      Swal.fire({
+        icon: 'error',
+        title: 'Tamaño de fichero excedido, Max: ' + this.MAX_SIZE_FILE_KB/1000000 + ' MB',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    }else if (target.files && target.files.length > 0) {
+      this.target = target
       this.image = target.files[0]
-    }  
-   }
-
+    }
+  }
 }

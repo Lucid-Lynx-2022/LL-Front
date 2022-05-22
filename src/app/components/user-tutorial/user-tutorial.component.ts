@@ -32,7 +32,8 @@ export class UserTutorialComponent implements OnInit{
   email: string;
   uid: string;
   displayName: string;
-  image;
+  image: File;
+  target: HTMLInputElement;
   
   constructor(public auth: AuthService, public dialog: MatDialog, public router: Router, private afAuth: AngularFireAuth, private fb: FormBuilder, private tutoService: TutoService)  { 
     this.tutorial = this.fb.group({
@@ -40,8 +41,6 @@ export class UserTutorialComponent implements OnInit{
       description: '',
     });
   }
-
-
 
   ngOnInit(): void {
     if( !this.auth.userLoggedIn) {
@@ -64,25 +63,37 @@ export class UserTutorialComponent implements OnInit{
  onFileChange(event: Event) {
   const target = event.target as HTMLInputElement;
   if(target.files[0].size > this.MAX_SIZE_FILE_KB){
-    //mensaje emergente de tamaño de fichero excedido
+    this.image = null
+    this.target= null
+    target.value = "";
+
     Swal.fire({
       icon: 'error',
-      title: 'tamaño de fichero excedido',
+      title: 'Tamaño de fichero excedido, Max: ' + this.MAX_SIZE_FILE_KB/1000000 + ' MB',
       showConfirmButton: false,
-      timer: 1500
+      timer: 3000
   });
-  }
-  if (target.files && target.files.length > 0) {
+  }else if (target.files && target.files.length > 0) {
+    this.target = target
     this.image = target.files[0]
   }  
  }
  saveNewTuto(){
-      Swal.showLoading();
-      this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
+    if(!this.image || !this.tutorial.get('title').value || !this.tutorial.get('description').value){
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe completar todos los campos',
+        showConfirmButton: false,
+        timer: 1500
+    });
+      return 
+    }
+    Swal.showLoading();
+    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
                                 this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
                                 this.image)
-    .then((newTuto) => {
-      // añadir mensaje emergente de publicacion añadida correctamente
+    .then((response) => {
       Swal.fire({
         icon: 'success',
         title: 'Tutorial Creado',
@@ -91,25 +102,28 @@ export class UserTutorialComponent implements OnInit{
     });
       this.loadMyPublics();
       this.tutorial.reset();
+      // resetar input file
+      this.target.value = "";
+      this.image = null
+      this.target= null
     })
     .catch((error) => {
-      // añadir mensaje emergente de publicacion añadida correctamente
+      //console.log(error.response.data.msg)
       Swal.close();
       Swal.fire({
         icon: 'error',
-        title: 'Debe completar todos los campos',
+        title: 'Error: ya exite una publicacion con el mismo titulo',
         showConfirmButton: false,
-        timer: 1500
+        timer: 3000
     });
     })
 
-    
   }
 
   loadMyPublics(){
     Swal.showLoading();
     this.tutoService.loadTuto(this.uid).then(tuto => {
-      this.tuto = tuto;
+      this.tuto = tuto.reverse();
       Swal.close();
     })
   }

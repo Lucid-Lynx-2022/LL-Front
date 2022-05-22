@@ -24,7 +24,6 @@ export class CategoryComponent implements OnInit{
   }
   
   ngOnInit(){
-    console.log(this.searchText)
   }
 
   isImage(url : string){
