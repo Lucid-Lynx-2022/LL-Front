@@ -19,7 +19,7 @@
             <div class="featured-container">
                 <div class="featured-tutorial-container">
                     <div class="section-title">
-                        <h3>Primer tutorial añadido</h3>
+                        <h3 class="titulos" >Primer tutorial añadido</h3>
                     </div>
                     <div class="featured-content" *ngFor="let public of RecentTutos | slice:0:1; let i=index" >
                       <a>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="recomendations-container">
                     <div class="section-title">
-                        <h3>Primeros tutoriales</h3>
+                        <h3 class="titulos" >Primeros tutoriales</h3>
                     </div>
                     <div class="option" *ngFor="let public of RecentTutos">
                       <div>
@@ -60,7 +60,7 @@
             </div>
             <div class="table-container">
                 <div class="section-title">
-                    <h3>Últimos Tutoriales</h3>
+                    <h3 class="titulos" >Últimos Tutoriales</h3>
                 </div>
                 <div class="section-content">
                   <div *ngFor="let public of HomeTutos | slice:0:10; let i=index" class="card">
