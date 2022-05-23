@@ -146,7 +146,7 @@ export class UserTutorialComponent implements OnInit{
     Swal.fire({
         title: 'Estás seguro que querer eliminar el tutorial?',
         showDenyButton: true,
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonText: 'Yes',
         denyButtonText: 'No',
         customClass: {
