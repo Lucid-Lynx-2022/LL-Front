@@ -28,9 +28,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
    
-     if( !this.auth.userLoggedIn) {
-      this.router.navigate(['/home']);
-     }
+     
 
     this.afAuth.currentUser.then((user) => {
       this.email =user.email
