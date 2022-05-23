@@ -4,7 +4,7 @@
             <div class="section-title">
                 <h2>Crear Tutorial</h2>
             </div>
-            <div class="section-content">
+            <div class="section-form">
                 <form [formGroup]="tutorial" >
                     <div>
                         <mat-form-field class="form-input" appearance="outline">
@@ -34,25 +34,25 @@
                 <h3 class="titulos">Mis Tutoriales</h3>
             </div>
             <div class="section-content">
-            <div *ngFor="let public of tuto" class="card">
-                <div class="card-option">
-                <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
-                    <img class="card-img" src="{{public.image}}">
-                </div>
-                <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
-                    <video class="card-img" src="{{public.image}}"></video>
-                </div>
-                <div class="card-description">
-                    <h3>{{public.title}}</h3>
-                    <p>Por {{public.displayName}}</p>                 
-                    <p>Por {{public.date}}</p>                 
-                </div>
-                <div class="card-buttons">
-                    <button (click)="openDialog(public)" mat-raised-button class="btn" type="submit" value="Editar">EDITAR</button>
-                    <button (click)="deleteThisTuto(public)" mat-raised-button class="btn-delete" type="submit" value="ELIMINAR">ELIMINAR</button>
-                </div>
-                </div>
-            </div>                      
+                <div *ngFor="let public of tuto" class="card">
+                    <div class="card-option">
+                        <div [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                            <img class="card-img" src="{{public.image}}">
+                        </div>
+                        <div [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                            <video class="card-img" src="{{public.image}}"></video>
+                        </div>
+                        <div class="card-description">
+                            <h3>{{public.title}}</h3>
+                            <p>Por {{public.displayName}}</p>                 
+                            <p>Por {{public.date}}</p>                 
+                        </div>
+                        <div class="card-buttons">
+                            <button (click)="openDialog(public)" mat-raised-button class="btn" type="submit" value="Editar">EDITAR</button>
+                            <button (click)="deleteThisTuto(public)" mat-raised-button class="btn-delete" type="submit" value="ELIMINAR">ELIMINAR</button>
+                        </div>
+                    </div>
+                </div>                      
             </div>
         </div>
     </div>
