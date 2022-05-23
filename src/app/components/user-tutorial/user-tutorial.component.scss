@@ -19,9 +19,10 @@
 .add-container{
     border: 10px solid #004643;
     margin-bottom: 50px;
-    padding: 50px;
+    padding: 20px;
     box-shadow: 0 4px 8px 0 rgb(65, 65, 65);
     text-align: center;
+    width: 100%;
 }
 
 .tutorial-container{
@@ -54,12 +55,19 @@
 .card{
     flex: 25%;
     padding: 10px;
+    transition: transform .4s;
+}
+
+.card:hover{
+    transform: scale(1.1);
 }
 
 .card-option{
     box-shadow: 0 4px 8px 0 black;
     background-color: #e8e4e6;
     border-radius: 5px;
+    height: 375px;
+    cursor: pointer;
 }
 
 .card-img{
@@ -111,9 +119,12 @@
 
 @media screen and (max-width: 1024px) {
     .card {
-        max-width: 100%;
+        max-width: 500px;
         flex: 50%;
         padding-bottom: 20px;
+    }
+    .card-option{
+        height: 100%;
     }
     .card-img{
         max-height: 250px;
@@ -129,6 +140,7 @@
 @media screen and (max-width: 768px) {
     .card {
         flex: 100%;
+        max-width: 100%;
     }
 }
 
