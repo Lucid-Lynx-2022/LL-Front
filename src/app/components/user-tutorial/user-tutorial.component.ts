@@ -143,17 +143,37 @@ export class UserTutorialComponent implements OnInit{
   }
 
   deleteThisTuto(tuto : Tuto){
-    Swal.showLoading();    
-    this.tutoService.deleteTuto(tuto._id as string)
-      .then(response => {
-        this.tuto = this.tuto.filter(t => t._id !== tuto._id)
-        Swal.fire({
-          icon: 'success',
-          title: 'Tutorial Eliminado',
-          showConfirmButton: false,
-          timer: 1500
-      });
+    Swal.fire({
+        title: 'Estás seguro que querer eliminar el tutorial?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+          denyButton: 'order-3',
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.showLoading();    
+          this.tutoService.deleteTuto(tuto._id as string)
+            .then(response => {
+              this.tuto = this.tuto.filter(t => t._id !== tuto._id)
+              Swal.fire({
+                icon: 'success',
+                title: 'Tutorial Eliminado',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            })
+        } else if (result.isDenied) {
+          Swal.fire('Te hemos salvado crack!', '', 'info')
+        }
       })
+
+
   }
 
 
