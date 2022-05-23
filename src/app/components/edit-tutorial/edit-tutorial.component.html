@@ -1,0 +1,34 @@
+<div class="add-tutorial">
+    <div class="add-container">
+        <div class="section-title">
+            <h3>Editar Tutorial</h3>
+        </div>
+        <div class="section-content">
+            <form [formGroup]="tutorial">
+                <div>
+                    <mat-form-field class="form-input" appearance="outline">
+                        <mat-label>Titulo</mat-label>
+                        <input autocomplete="false" name="hidden" type="text" formControlName="title" matInput placeholder="Titulo" >
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="form-input" appearance="outline">
+                        <mat-label>Descripción</mat-label>
+                        <textarea type="text" formControlName="description" matInput placeholder="Descripción" ></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <input type="file" placeholder="Imagen" accept="image/png,image/jpeg,video/mp4" (change)="onFileChange($event)"> 
+                </div>
+                <div>
+                    <button mat-raised-button class="btn" (click)="updateTuto()" type="submit" value="Actualizar" style="margin-top: 20px;">Actualizar</button>
+                </div>
+                <div>
+                    <button mat-raised-button class="btn-cancel" (click)="close()"  value="Cancelar" style="margin-top: 20px;">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h2>
+    </h2>
+</div>

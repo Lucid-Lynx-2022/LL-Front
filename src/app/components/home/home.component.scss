@@ -14,15 +14,39 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #004643;
-    height: 500px;
+    background-image: url("https://c0.wallpaperflare.com/preview/763/165/124/flatlay-craft-diy-school-arts.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    height: 600px;
     width: 100%;
     padding: 60px;
     color: white;
 }
 
+header::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.50);
+}
+
+button{
+    transition: transform .4s;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
+
 .header-container{
+    position: relative;
     text-align: center;
+    color: white;
 }
 
 .content-header{
@@ -48,6 +72,13 @@ h1{
 
 /////////SECTION///////////
 
+.titulos{
+    border-radius: 20px;
+    font-size: large;
+    background-color: #F9BC60;
+    padding-left: 10px;
+
+}
 section{
     width: 100%;
 }
@@ -95,7 +126,7 @@ section{
 }
 
 .img-option{
-    width: 100%;
+    width: 225px;
     max-height: 150px;
     border-radius: 10px;
 }
@@ -118,32 +149,45 @@ section{
 .card{
     flex: 25%;
     padding: 10px;
+    transition: transform .4s;
 }
 
-
+.card:hover{
+    transform: scale(1.1);
+}
 
 .card-option{
     box-shadow: 0 4px 8px 0 black;
-    background-color: #e8e4e6;
+    background-color: #e9e9e9;
     border-radius: 5px;
     height: 375px;
+    cursor: pointer;
 }
 
 .card-img{
     width: 100%;
     max-height: 150px;
     border-radius: 5px;
+    background-color: black;
 }
 
 .card-description{
     padding: 10px;
 }
 
+.description{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
   
 /* MQ */
 @media screen and(min-width: 1441px) {
     .card{
         max-width: 325px;
+    }
+    .card-option{
+        max-width: 300px;
     }
     
 }
@@ -152,12 +196,15 @@ section{
     .section-container{
         margin: 30px 150px;
     }
+    .card{
+        max-width: 285px
+    }
 };
 
 @media screen and (max-width: 1024px) {
     .featured-tutorial-container, .recomendations-container{
         flex: 100%;
-        padding: 0;
+        padding: 20px;
     }
     .featured-content{
         padding: 0;
@@ -171,7 +218,11 @@ section{
         border-left: 0px;
         border-top:1px solid #e8e4e6;
     }
+    .img-option{
+        width: 100%;
+    }
     .card {
+        max-width: 497px;
         flex: 50%;
         padding-bottom: 20px;
     }
@@ -195,9 +246,7 @@ section{
     }
     .card {
         flex: 100%;
-    }
-    .card-img{
-        max-height: 350px;
+        max-width: 100%;
     }
 }
 

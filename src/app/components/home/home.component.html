@@ -19,64 +19,60 @@
             <div class="featured-container">
                 <div class="featured-tutorial-container">
                     <div class="section-title">
-                        <h3>Tutorial Destacado</h3>
+                        <h3 class="titulos" >Primer tutorial añadido</h3>
                     </div>
-                    <div class="featured-content">
-                      <a><img class="featured-img" src="https://c0.wallpaperflare.com/preview/14/791/735/flatlay-children-craft-diy-school.jpg"></a>
-                      <h3>Manualidades magícas</h3>
-                      <h4>En este tutorial podrás ver manualidades para tus trucos de magía.</h4>
-                      <p>Por Miguelito33</p>
+                    <div class="featured-content" *ngFor="let public of RecentTutos | slice:0:1; let i=index" >
+                      <a>
+                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                          <img class="featured-img" src="{{public.image}}">
+                        </div>
+                        <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                          <video class="featured-img" src="{{public.image}}" autoplay muted loop></video>
+                        </div> 
+                      </a>
+                      <h3><strong>{{public.title}}</strong></h3>
+                      <h4>{{public.date}}</h4>
+                      <p>Por {{public.displayName}}</p>
                     </div>
                 </div>
                 <div class="recomendations-container">
                     <div class="section-title">
-                        <h3>Tutoriales Destacados</h3>
+                        <h3 class="titulos" >Primeros tutoriales</h3>
                     </div>
-                    <div class="option">
+                    <div class="option" *ngFor="let public of RecentTutos">
                       <div>
-                        <a><img class="img-option" src="https://c0.wallpaperflare.com/preview/955/464/977/backgrounds-flatlay-craft-diy-school.jpg"></a>
+                        <a>
+                          <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isImage(public.image)">
+                            <img class="img-option" src="{{public.image}}">
+                          </div>
+                          <div style="cursor: pointer;" [routerLink]="['/detail', public._id]" *ngIf="isVideo(public.image)">
+                              <video class="img-option" src="{{public.image}}"></video>
+                          </div>
+                        </a>                      
                       </div>
                       <div class="option-description">
-                        <p><strong>Afilador casero</strong></p>
-                        <p>🖤23213</p>
-                        <p>Por Mambru12</p>
-                      </div>
-                    </div>
-                    <div class="option">
-                      <div>
-                        <a><img class="img-option" src="https://c0.wallpaperflare.com/preview/763/165/124/flatlay-craft-diy-school-arts.jpg"></a>
-                      </div>
-                      <div class="option-description">
-                        <p><strong>Afilador casero</strong></p>
-                        <p>🖤12345</p>
-                        <p>Por XxPedritoxX</p>
-                      </div>
-                    </div>
-                    <div class="option">
-                      <div>
-                        <a><img class="img-option" src="https://c0.wallpaperflare.com/preview/418/350/388/flatlay-craft-diy-gifts.jpg"></a>
-                      </div>
-                      <div class="option-description">
-                        <p><strong>Afilador casero</strong></p>
-                        <p>🖤11213</p>
-                        <p>Por Pepelu456</p>
+                        <p><strong>{{public.title}}</strong></p>
+                        <p>{{public.date}}</p>
+                        <p>Por {{public.displayName}}</p>
                       </div>
                     </div>
                 </div>
             </div>
             <div class="table-container">
                 <div class="section-title">
-                    <h3>Últimos Tutoriales</h3>
+                    <h3 class="titulos" >Últimos Tutoriales</h3>
                 </div>
                 <div class="section-content">
-                  <div *ngFor="let public of tuto" class="card">
-                    <div class="card-option">
-                      <div>
+                  <div *ngFor="let public of HomeTutos | slice:0:10; let i=index" class="card">
+                    <div class="card-option" [routerLink]="['/detail', public._id]">
+                      <div *ngIf="isImage(public.image)">
                         <img class="card-img" src="{{public.image}}">
+                      </div>
+                      <div *ngIf="isVideo(public.image)">
+                          <video class="card-img" src="{{public.image}}" ></video>
                       </div>
                       <div class="card-description">
                         <h3>{{public.title}}</h3>
-                        <p>{{public.description}}</p>
                         <p>Por {{public.displayName}}</p>
                       </div>
                     </div>

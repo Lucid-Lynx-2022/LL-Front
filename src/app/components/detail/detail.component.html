@@ -1,17 +1,38 @@
-<header>
-    <div class="header-container">
-        <div class="section-content">
-            <div class="card">
-              <div class="card-option">
-                <div>
-                  <img class="card-img" src="https://c0.wallpaperflare.com/preview/638/559/745/hands-textures-craft-diy-sewing.jpg">
-                </div>
-                <div class="card-description">
-                  <p>{{displayName}}</p>
-                  <p>{{email}}</p>
-                </div>
-              </div>
-            </div>
-        </div>
+<button class="btn-back" (click)="back()">Atrás</button>
+<div class="container">
+  <div class="detail-container">
+    <div class="img-video">
+      <div *ngIf="isImage(public.image)">
+        <img class="detail-img" src="{{public.image}}">
+      </div>
+      <div *ngIf="isVideo(public.image)">
+          <video class="detail-img" src="{{public.image}}" autoplay muted loop></video>
+      </div>
     </div>
-</header>
+    <div class="detail-description">
+      <div class="detail-principal">
+        <div class="option">
+          <label>Autor</label>
+          <p>{{public.displayName}}</p>
+        </div>
+        <div class="option">
+          <label>Email</label>
+          <p>{{public.email}}</p>
+        </div>
+        <div class="option">
+          <label>Fecha de subida</label>
+          <p>{{public.date}}</p>
+        </div>
+      </div>
+      <div class="option">
+        <label>Titulo</label>
+        <p>{{public.title}}</p>
+      </div>
+      
+      <div class="option">
+        <label>Descripción</label>
+        <p>{{public.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,8 +4,31 @@
     box-sizing: border-box;
     color: white;
 }
+
 span{
   cursor: pointer;
+  transition: transform .4s;
+}
+
+span:hover{
+  transform: scale(1.1);
+}
+
+a{
+  transition: transform .4s;
+}
+
+a:hover{
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.10);
+}
+
+button{
+  transition: transform .4s;
+}
+
+button:hover{
+  transform: scale(1.1);
 }
 
 .navbar{
@@ -40,7 +63,7 @@ ul{
   margin-right: 20px;
 }
   
-  @media (max-width: 768px){
+@media (max-width: 768px){
     ul a{
       font-size: 18px;
     }
@@ -65,4 +88,10 @@ ul{
     #check:checked ~ ul{
       left: 0;
     }
+}
+
+@media (max-width: 430px){
+  .title{
+    display: none;
   }
+}

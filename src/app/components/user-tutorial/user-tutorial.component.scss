@@ -5,9 +5,8 @@
 .container{
     display: flex;
     flex-wrap: wrap;
-    margin: 0px 300px;
+    margin: 100px 300px;
     background-color: #fffffe;
-    margin-top: 100px;
 }
 
 .add-tutorial{
@@ -18,6 +17,10 @@
 }
 
 .add-container{
+    border: 10px solid #004643;
+    margin-bottom: 50px;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgb(65, 65, 65);
     text-align: center;
 }
 
@@ -43,6 +46,11 @@
     background-color: #F9BC60;
 }
 
+.btn-delete{
+    background-color: #e16162;
+    color: white;
+}
+
 .card{
     flex: 25%;
     padding: 10px;
@@ -52,34 +60,58 @@
     box-shadow: 0 4px 8px 0 black;
     background-color: #e8e4e6;
     border-radius: 5px;
-    height: 375px;
 }
 
 .card-img{
     width: 100%;
     max-height: 150px;
     border-radius: 5px;
+    background-color: black;
 }
+.titulos{
+    border-radius: 20px;
+    font-size: large;
+    background-color: #F9BC60;
+    padding-left: 10px;
 
+}
 .card-description{
     padding: 10px;
+}
+
+.card-buttons{
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.description{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and(min-width: 1441px) {
     .card{
         max-width: 325px;
     }
-    
+    .card-option{
+        max-width: 300px;
+    }
 }
 
 @media screen and(max-width: 1440px){
     .container{
-        margin: 30px 150px;
+        margin: 100px 150px;
+    }
+    .card{
+        max-width: 285px
     }
 };
 
 @media screen and (max-width: 1024px) {
     .card {
+        max-width: 100%;
         flex: 50%;
         padding-bottom: 20px;
     }
@@ -87,7 +119,7 @@
         max-height: 250px;
     }
     .container{
-        margin: 30px 50px;
+        margin: 100px 50px;
     }
     .section-title{
         text-align: center;
@@ -98,13 +130,10 @@
     .card {
         flex: 100%;
     }
-    .card-img{
-        max-height: 350px;
-    }
 }
 
 @media screen and(max-width: 480px){
     .container{
-        margin: 30px 5px;
+        margin: 100px 5px;
     }
 };

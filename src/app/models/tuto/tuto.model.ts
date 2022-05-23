@@ -6,4 +6,5 @@ export type Tuto ={
     "date": string;
     "title": string;
     "description": string;
+    "image": string;
 }

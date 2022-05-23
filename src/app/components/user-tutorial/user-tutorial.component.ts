@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TutoService } from '../../services/tuto/tuto.service';
 import { Tuto } from '../../models/tuto/tuto.model'
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { EditTutorialComponent } from '../edit-tutorial/edit-tutorial.component';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -12,7 +15,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   templateUrl: './user-tutorial.component.html',
   styleUrls: ['./user-tutorial.component.scss']
 })
+
+
+
 export class UserTutorialComponent implements OnInit{
+  MAX_SIZE_FILE_KB =  40000000 //40MB
 
   tuto : Tuto[] = [];
   tutorial: FormGroup;
@@ -25,8 +32,10 @@ export class UserTutorialComponent implements OnInit{
   email: string;
   uid: string;
   displayName: string;
+  image: File;
+  target: HTMLInputElement;
   
-  constructor(public auth: AuthService, public router: Router, private afAuth: AngularFireAuth, private fb: FormBuilder, private tutoService: TutoService)  { 
+  constructor(public auth: AuthService, public dialog: MatDialog, public router: Router, private afAuth: AngularFireAuth, private fb: FormBuilder, private tutoService: TutoService)  { 
     this.tutorial = this.fb.group({
       title: '',
       description: '',
@@ -34,11 +43,9 @@ export class UserTutorialComponent implements OnInit{
   }
 
   ngOnInit(): void {
-   
     if( !this.auth.userLoggedIn) {
      this.router.navigate(['/home']);
     }
-
    this.afAuth.currentUser.then((user) => {
      this.email =user.email
      this.uid =user.uid
@@ -48,46 +55,150 @@ export class UserTutorialComponent implements OnInit{
     }else{
       this.displayName = user.displayName
     }
-   });
-   this.loadPublics();
+   }).then((h) => {
+     this.loadMyPublics();
+   })
  }
 
-  saveNewTask(){
-    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, this.uid, this.displayName, this.email, new Date().toLocaleDateString())
-    .then((newTuto) => {
-      this.loadPublics();
+ onFileChange(event: Event) {
+  const target = event.target as HTMLInputElement;
+  if(target.files[0].size > this.MAX_SIZE_FILE_KB){
+    this.image = null
+    this.target= null
+    target.value = "";
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Tamaño de fichero excedido, Max: ' + this.MAX_SIZE_FILE_KB/1000000 + ' MB',
+      showConfirmButton: false,
+      timer: 3000
+  });
+  }else if (target.files && target.files.length > 0) {
+    this.target = target
+    this.image = target.files[0]
+  }  
+ }
+ saveNewTuto(){
+
+    if(!this.image || !this.tutorial.get('title').value || !this.tutorial.get('description').value){
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe completar todos los campos',
+        showConfirmButton: false,
+        timer: 1500
+    });
+      return 
+    }
+
+    if(this.tutorial.get('title').value.trim() === "" || this.tutorial.get('description').value.trim() === ""){
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe de insertar caracteres si quiere añadir nuevo tutorial',
+        showConfirmButton: false,
+        timer: 1500
+    });
+      return 
+    }
+
+
+    Swal.showLoading();
+    this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
+                                this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
+                                this.image)
+    .then((response) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Tutorial Creado',
+        showConfirmButton: false,
+        timer: 1500
+    });
+      this.loadMyPublics();
       this.tutorial.reset();
+      // resetar input file
+      this.target.value = "";
+      this.image = null
+      this.target= null
     })
+    .catch((error) => {
+      //console.log(error.response.data.msg)
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error: ya exite una publicacion con el mismo titulo',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    })
+
   }
 
-  /*
-  addTutorial() {
-    console.log(this.tutorial.value);
-
-    const Tutorial: any = {
-      title: this.tutorial.get('title').value,
-      description: this.tutorial.get('description').value,
-      uid: this.uid,
-      
-      autor: this.displayName,
-      email: this.email,
-      fecha: new Date().toLocaleDateString()
-    } 
-  console.log(Tutorial);
-  }
-  */
-
-  loadPublics(){
-    this.tutoService.loadTuto().then(tuto => {
-      this.tuto = tuto;
+  loadMyPublics(){
+    Swal.showLoading();
+    this.tutoService.loadTuto(this.uid).then(tuto => {
+      this.tuto = tuto.reverse();
+      Swal.close();
     })
   }
 
   deleteThisTuto(tuto : Tuto){
-    this.tutoService.deleteTuto(tuto._id as string)
-      .then(response => {
-        this.tuto = this.tuto.filter(t => t._id !== tuto._id)
+    Swal.fire({
+        title: 'Estás seguro que querer eliminar el tutorial?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+          actions: 'my-actions',
+          confirmButton: 'order-2',
+          denyButton: 'order-3',
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.showLoading();    
+          this.tutoService.deleteTuto(tuto._id as string)
+            .then(response => {
+              this.tuto = this.tuto.filter(t => t._id !== tuto._id)
+              Swal.fire({
+                icon: 'success',
+                title: 'Tutorial Eliminado',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            })
+        } else if (result.isDenied) {
+          Swal.fire('Te hemos salvado crack!', '', 'info')
+        }
       })
+
+
+  }
+
+
+
+  isImage(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.jpeg') || url.endsWith('.png')|| url.endsWith('.gif')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isVideo(url : string){
+    if(url === undefined) return false;
+    if(url.endsWith('.mp4')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  openDialog(tuto : Tuto) {
+    this.dialog.open(EditTutorialComponent, {
+      data: tuto._id, 
+    });
   }
 
 }

@@ -1,0 +1,32 @@
+.add-tutorial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.add-container{
+    border: 10px solid #004643;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgb(65, 65, 65);
+    text-align: center;
+    text-align: center;
+}
+
+.section-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section-title{
+    text-align: center;
+}
+
+.btn{
+    background-color: #F9BC60;
+}
+
+.btn-cancel{
+    background-color: #e16162;
+    color: white;
+}

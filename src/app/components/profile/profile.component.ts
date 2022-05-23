@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  
+
   email: string;
   uid: string;
   displayName: string;
@@ -18,12 +18,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
    
-     if( !this.auth.userLoggedIn) {
+    if( !this.auth.userLoggedIn) {
       this.router.navigate(['/home']);
-     }
+    }
 
     this.afAuth.currentUser.then((user) => {
       this.email =user.email
+      //user.getIdToken
       this.uid =user.uid
       if (user.displayName==''){
         var res = user.email.split("@");
