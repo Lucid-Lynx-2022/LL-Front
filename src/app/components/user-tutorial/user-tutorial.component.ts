@@ -151,7 +151,6 @@ export class UserTutorialComponent implements OnInit{
         denyButtonText: 'No',
         customClass: {
           actions: 'my-actions',
-          cancelButton: 'order-1 right-gap',
           confirmButton: 'order-2',
           denyButton: 'order-3',
         }
