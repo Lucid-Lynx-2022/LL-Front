@@ -79,6 +79,7 @@ export class UserTutorialComponent implements OnInit{
   }  
  }
  saveNewTuto(){
+
     if(!this.image || !this.tutorial.get('title').value || !this.tutorial.get('description').value){
       Swal.close();
       Swal.fire({
@@ -89,6 +90,19 @@ export class UserTutorialComponent implements OnInit{
     });
       return 
     }
+
+    if(this.tutorial.get('title').value.trim() === "" || this.tutorial.get('description').value.trim() === ""){
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe de insertar caracteres si quiere añadir nuevo tutorial',
+        showConfirmButton: false,
+        timer: 1500
+    });
+      return 
+    }
+
+
     Swal.showLoading();
     this.tutoService.saveNewTuto(this.tutorial.get('title').value, this.tutorial.get('description').value, 
                                 this.uid, this.displayName, this.email, new Date().toLocaleDateString(),
